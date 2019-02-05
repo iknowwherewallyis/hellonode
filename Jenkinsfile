@@ -52,7 +52,7 @@ podTemplate(label: 'docker-test',
                     if(branch == 'master') {
 			//sh "kubectl -n default set image cronjob.batch/test hello=${REPO_ADDRESS}/${PHP_REPO}:${commit_id}"
 			sh "kubectl -n default set image cronjob.batch/test hello=${REPO_ADDRESS}/${PHP_REPO}:${commit_id}"
-			    sh "kubectl -n default get cronjob.batch/test -o jsonpath={.spec.containers.image}"    
+			    sh "kubectl -n default get cronjob.batch/test -o jsonpath={.spec.containers}"    
                     }
                     if(branch != 'master') {
                         sh "echo 'Unsupported branch.'"
