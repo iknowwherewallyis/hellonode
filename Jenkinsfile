@@ -97,7 +97,7 @@ podTemplate(label: 'docker-test',
     stage('Clone repository') {
            container('jnlp'){
            withKubeConfig([credentialsId: 'user-token',
-                    serverUrl: 'https://192.168.99.117:8443',
+                    serverUrl: 'https://192.168.99.118:8443',
                     //contextName: 'minikube',
                     //clusterName: 'minikube',
                     ]) {
