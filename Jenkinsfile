@@ -96,11 +96,11 @@ podTemplate(label: 'docker-test',
     def app
     stage('Clone repository') {
            container('jnlp'){
-           withKubeConfig([credentialsId: 'user-token',
-                    serverUrl: 'https://192.168.99.118:8443',
+          // withKubeConfig([credentialsId: 'user-token',
+           //         serverUrl: 'https://192.168.99.118:8443',
                     //contextName: 'minikube',
                     //clusterName: 'minikube',
-                    ]) {
+            //        ]) {
         sh "hostname"
         //sh "kubectl get po --all-namespaces" //this shouldn't work at all but it does
         //checkout scm
@@ -109,7 +109,7 @@ podTemplate(label: 'docker-test',
       //sh 'kubectl config current-context'
       //sh 'kubectl cluster-info'
       //sh 'kubectl get deployment jenkins-leader --namespace=jenkins'
-    }
+   // }
     }
     }
     }
