@@ -1,3 +1,4 @@
+FROM node:7-onbuild
 ARG some_variable_name
 # or with a default:
 #ARG some_variable_name=default_value
