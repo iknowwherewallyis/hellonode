@@ -1,0 +1,56 @@
+version: '3'
+
+services:
+    cct_php:
+        container_name: cct-dt-php
+        build:
+            context: ./app
+            dockerfile: ./Dockerfile
+        depends_on:
+            - cct_maria_db
+        env_file:
+            - ./app/.env.common
+            - ./app/.env.dev
+        ports:
+            - "9000:9000"
+        expose:
+            - "9000"
+        # Comment out these volumes in production
+        volumes:
+            - ./app:/var/app/cct:rw
+            # If you develop on Linux, comment out the following volumes to just use bind-mounted project directory from host
+            - /var/app/cct/var/
+            - /var/app/cct/var/cache/
+            - /var/app/cct/var/logs/
+            - /var/app/cct/var/sessions/
+
+    cct_nginx:
+        container_name: cct-dt-nginx
+        build:
+            context: ./app
+            dockerfile: ./Dockerfile.nginx
+        depends_on:
+            - cct_php
+        ports:
+            - "8081:80"
+        volumes:
+            - ./app/public:/var/app/cct/public:ro
+
+    cct_maria_db:
+        image: mariadb:10.3
+        container_name: cct-dt-mariadb
+        environment:
+            - MYSQL_USER=admin
+            - MYSQL_PASSWORD=admin
+            - MYSQL_ROOT_PASSWORD=root
+            - MYSQL_DATABASE=cct_frontend_test
+        volumes:
+            - db-data:/var/lib/mysql:rw
+        restart: always
+        ports:
+            - "3308:3306"
+        expose:
+            - 3308
+
+volumes:
+    db-data: {}
