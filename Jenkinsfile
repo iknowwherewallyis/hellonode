@@ -15,11 +15,11 @@ podTemplate(label: 'docker-test',
     node ('docker-test'){
     
     */
-	    node {
+node {
   // define the secrets and the env variables
   def secrets = [
       [$class: 'VaultSecret', path: 'secret/hello', secretValues: [
-          [$class: 'VaultSecretValue', envVar: 'hello', vaultKey: 'value']]]
+          [$class: 'VaultSecretValue', envVar: 'hello', vaultKey: 'value1']]]
   ]
 
   // optional configuration, if you do not provide this the next higher configuration
@@ -31,7 +31,6 @@ podTemplate(label: 'docker-test',
   // inside this block your credentials will be available as env variables
   wrap([$class: 'VaultBuildWrapper', configuration: configuration, vaultSecrets: secrets]) {
       sh 'echo $hello'
-	  println(hudson.util.Secret.decrypt(hello))
   }
 }
     
