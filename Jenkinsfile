@@ -33,8 +33,7 @@ podTemplate(label: 'docker-test',
       sh 'echo $hello'
   }
 }
-    }
-}
+    
 	
 	/*
 	   docker.withRegistry("${REPO_ADDRESS}", "DOCKERHUB_CREDS"){
