@@ -120,7 +120,7 @@ podTemplate(label: 'docker-test',
                     serverUrl: 'https://192.168.99.119:8443',
                     //contextName: 'minikube',
                     //clusterName: 'minikube',
-            //        ]) {
+                   ]) {
         sh "hostname"
         //sh "kubectl get po --all-namespaces" //this shouldn't work at all but it does
         //checkout scm
