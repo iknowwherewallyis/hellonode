@@ -1,4 +1,4 @@
-withCredentials([
+/*withCredentials([
     string(credentialsId: 'PHP_REPO', variable: 'PHP_REPO'),
     string(credentialsId: 'REPO_ADDRESS', variable: 'REPO_ADDRESS'),
 ]) {
@@ -13,6 +13,30 @@ podTemplate(label: 'docker-test',
 {
 
     node ('docker-test'){
+    
+    */
+	    node {
+  // define the secrets and the env variables
+  def secrets = [
+      [$class: 'VaultSecret', path: 'secret/hello', secretValues: [
+          [$class: 'VaultSecretValue', envVar: 'hello', vaultKey: 'value']]]
+  ]
+
+  // optional configuration, if you do not provide this the next higher configuration
+  // (e.g. folder or global) will be used
+  def configuration = [$class: 'VaultConfiguration',
+                       vaultUrl: 'http://vault.cct.marketing',
+                       vaultCredentialId: 'jenkins-cred-id']
+
+  // inside this block your credentials will be available as env variables
+  wrap([$class: 'VaultBuildWrapper', configuration: configuration, vaultSecrets: secrets]) {
+      sh 'echo $hello'
+  }
+}
+    }
+}
+	
+	/*
 	   docker.withRegistry("${REPO_ADDRESS}", "DOCKERHUB_CREDS"){
            //withKubeConfig([credentialsId: '5b690a2e-c11b-4fa9-941d-08163a13c02c',
            //         serverUrl: 'https://192.168.99.117:8443',
@@ -78,7 +102,7 @@ podTemplate(label: 'docker-test',
 }
 
 
-
+*/
 
 /*
 podTemplate(label: 'docker-test', 
