@@ -25,7 +25,10 @@ node ('docker-test'){
 
 
   
-  
+  		     wrap([$class: 'VaultBuildWrapper', configuration: configuration, vaultSecrets: secrets]) {
+			     def tokenToUse
+			     tokenToUse=$token
+		     }
   
   
 
@@ -34,8 +37,8 @@ node ('docker-test'){
            //         serverUrl: 'https://192.168.99.117:8443',
            //         contextName: 'minikube',
            //         clusterName: 'minikube',
-		     wrap([$class: 'VaultBuildWrapper', configuration: configuration, vaultSecrets: secrets]) {
-		   withKubeConfig([credentialsId: "$token",
+
+		   withKubeConfig([credentialsId: "tokenToUse",
                    serverUrl: 'https://api.cct.marketing',
                     //contextName: 'netsuite-consumer',
                     //clusterName: 'cct.marketing',
