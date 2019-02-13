@@ -27,7 +27,7 @@ node ('docker-test'){
   
   		     wrap([$class: 'VaultBuildWrapper', configuration: configuration, vaultSecrets: secrets]) {
 			     def tokenToUse
-			     tokenToUse=$token
+			     tokenToUse="${token}"
 		     }
   
   
