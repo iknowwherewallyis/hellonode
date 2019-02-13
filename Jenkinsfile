@@ -112,16 +112,12 @@ podTemplate(label: 'docker-test',
             ])
 {
     node ('docker-test'){
-           withKubeConfig([credentialsId: '5b690a2e-c11b-4fa9-941d-08163a13c02c',
-                    serverUrl: 'https://192.168.99.119:8443',
-            //        contextName: 'minikube',
-            //        clusterName: 'minikube',
-                     ]) {
+
     def app
     stage('Clone repository') {
            container('jnlp'){
-          // withKubeConfig([credentialsId: 'user-token',
-           //         serverUrl: 'https://192.168.99.118:8443',
+           withKubeConfig([credentialsId: 'user-token',
+                    serverUrl: 'https://192.168.99.119:8443',
                     //contextName: 'minikube',
                     //clusterName: 'minikube',
             //        ]) {
