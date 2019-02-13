@@ -42,7 +42,7 @@ node ('docker-test'){
                    serverUrl: 'https://api.cct.marketing',
                     //contextName: 'netsuite-consumer',
                     //clusterName: 'cct.marketing',
-				   }
+
 			  ]){
 		   
 
