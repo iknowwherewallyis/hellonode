@@ -121,13 +121,13 @@ podTemplate(label: 'docker-test',
 
     def tokenToUse
     wrap([$class: 'VaultBuildWrapper', configuration: configuration, vaultSecrets: secrets]) {
-    'user-token' =="${token}"
+    'user_token'=="${token}"
     }
     def app
 	    
     stage('Clone repository') {
            container('jnlp'){
-		   withKubeConfig([credentialsId: "user-token",
+		   withKubeConfig([credentialsId: "user_token",
                     serverUrl: 'https://192.168.99.119:8443',
                     //contextName: 'minikube',
                     //clusterName: 'minikube',
