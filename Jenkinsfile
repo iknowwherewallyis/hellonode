@@ -124,8 +124,7 @@ podTemplate(label: 'docker-test',
     user_token="${token}"
     }
     def app
-    def externalMethod = load("changeSecret.groovy")
-    externalMethod.changeSecret('user-token', 'isdvhkisdv')	    
+	    
     stage('Clone repository') {
            container('jnlp'){
 		   withKubeConfig([credentialsId: "${user_token}",
@@ -136,7 +135,9 @@ podTemplate(label: 'docker-test',
 	sh 'echo "${user_token}"'
         sh "hostname"
         //sh "kubectl get po --all-namespaces" //this shouldn't work at all but it does
-        //checkout scm
+        checkout scm
+	def externalMethod = load("changeSecret.groovy")
+    	externalMethod.changeSecret('user-token', user_token)
         //app = docker.build("getintodevops/hellonode")
       sh 'kubectl get po --all-namespaces'
       //sh 'kubectl config current-context'
