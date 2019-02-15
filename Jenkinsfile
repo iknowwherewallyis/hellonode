@@ -1,4 +1,4 @@
-
+/*
 withCredentials([
     string(credentialsId: 'PHP_REPO', variable: 'PHP_REPO'),
     string(credentialsId: 'REPO_ADDRESS', variable: 'REPO_ADDRESS'),
@@ -98,9 +98,9 @@ wrap([$class: 'VaultBuildWrapper', configuration: configuration, vaultSecrets: s
 }
 
 
+*/
 
 
-/*
 podTemplate(label: 'docker-test', 
             serviceAccount: 'jenkins',
             volumes: [hostPathVolume(hostPath: '/var/run/docker.sock', mountPath: '/var/run/docker.sock')],        
@@ -132,4 +132,4 @@ podTemplate(label: 'docker-test',
     }
 }
 }
-*/
+
