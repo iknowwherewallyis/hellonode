@@ -97,7 +97,7 @@ wrap([$class: 'VaultBuildWrapper', configuration: configuration, vaultSecrets: s
 }
 
 
-*/
+
 
 /*
 podTemplate(label: 'docker-test', 
