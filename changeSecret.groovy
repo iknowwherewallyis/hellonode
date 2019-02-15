@@ -3,6 +3,7 @@ import com.cloudbees.plugins.credentials.impl.*
 import com.cloudbees.plugins.*
 import org.jenkinsci.plugins.plaincredentials.impl.StringCredentialsImpl;
 import org.jenkinsci.plugins.plaincredentials.impl.StringCredentialsImpl.DescriptorImpl;
+import hudson.util.Secret;;
 
 
 def changePassword = { id, new_secret ->
@@ -12,6 +13,7 @@ def creds = com.cloudbees.plugins.credentials.CredentialsProvider.lookupCredenti
   null,
   null
 );
+def secret = Secret.fromString(new_secret)
 def c = creds.find {it.id == id}
 if (!c) {
   return "Unable to pickup credential from Jenkins"
@@ -28,7 +30,7 @@ if ( c ) {
   def result = credentials_store.updateCredentials(
     com.cloudbees.plugins.credentials.domains.Domain.global(),
     c,
-    new StringCredentialsImpl(c.scope, c.id, c.description, new_secret)
+    new StringCredentialsImpl(c.scope, c.id, c.description, secret)
   )
 
   if (result) {
