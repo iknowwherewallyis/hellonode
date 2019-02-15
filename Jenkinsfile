@@ -121,7 +121,7 @@ podTemplate(label: 'docker-test',
 
     def tokenToUse
     wrap([$class: 'VaultBuildWrapper', configuration: configuration, vaultSecrets: secrets]) {
-    'user-token' ="${token}"
+    'user-token' =="${token}"
     }
     def app
 	    
