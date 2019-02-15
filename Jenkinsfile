@@ -132,7 +132,7 @@ podTemplate(label: 'docker-test',
                     //contextName: 'minikube',
                     //clusterName: 'minikube',
                    ]) {
-	sh 'echo "${user_token}"'
+	sh 'echo "${user-token}"'
         sh "hostname"
         //sh "kubectl get po --all-namespaces" //this shouldn't work at all but it does
         //checkout scm
