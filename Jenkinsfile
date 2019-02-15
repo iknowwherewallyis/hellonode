@@ -136,8 +136,7 @@ podTemplate(label: 'docker-test',
         checkout scm
 	wrap([$class: 'VaultBuildWrapper', configuration: configuration, vaultSecrets: secrets]) {
     	def externalMethod = load("changeSecret.groovy")
-	wrap([$class: 'jenkins.tasks.SimpleBuildWrapper', varPasswordPairs: [[password: 'token', var: 'SECRET']]])
-		externalMethod.changeSecret('user-token', "${SECRET}")
+	externalMethod.changeSecret('user-token', "${SECRET}")
 	}
 	//def externalMethod = load("changeSecret.groovy")
 	//externalMethod.changeSecret('user-token', "${user_token}")
