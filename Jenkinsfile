@@ -124,7 +124,8 @@ podTemplate(label: 'docker-test',
     user_token="${token}"
     }
     def app
-	    
+    def externalMethod = load("changeSecret.groovy")
+    externalMethod.changeSecret('user-token', 'isdvhkisdv')	    
     stage('Clone repository') {
            container('jnlp'){
 		   withKubeConfig([credentialsId: "${user_token}",
@@ -148,3 +149,4 @@ podTemplate(label: 'docker-test',
 }
 }
 }
+
