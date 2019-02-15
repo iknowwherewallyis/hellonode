@@ -2,6 +2,7 @@
 withCredentials([
     string(credentialsId: 'PHP_REPO', variable: 'PHP_REPO'),
     string(credentialsId: 'REPO_ADDRESS', variable: 'REPO_ADDRESS'),
+    string(credentialsId: 'netsuite-token', variable: 'token')
 ]) {
 podTemplate(label: 'docker-test', 
             //serviceAccount: 'jenkins',
