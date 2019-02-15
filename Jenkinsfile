@@ -1,5 +1,4 @@
 
-/*
 withCredentials([
     string(credentialsId: 'PHP_REPO', variable: 'PHP_REPO'),
     string(credentialsId: 'REPO_ADDRESS', variable: 'REPO_ADDRESS'),
@@ -23,29 +22,26 @@ node ('docker-test'){
                        vaultUrl: 'http://vault.cct.marketing',
                        vaultCredentialId: 'jenkins-cred-id']
 
-  // inside this block your credentials will be available as env variables
-
-
   
-  		     wrap([$class: 'VaultBuildWrapper', configuration: configuration, vaultSecrets: secrets]) {
-			     def tokenToUse
-			     tokenToUse="${token}"
-		     }
+wrap([$class: 'VaultBuildWrapper', configuration: configuration, vaultSecrets: secrets]) {
+     def tokenToUse
+     tokenToUse="${token}"
+}
   
   
 
-  	   docker.withRegistry("${REPO_ADDRESS}", "DOCKERHUB_CREDS"){
-           //withKubeConfig([credentialsId: '5b690a2e-c11b-4fa9-941d-08163a13c02c',
-           //         serverUrl: 'https://192.168.99.117:8443',
-           //         contextName: 'minikube',
-           //         clusterName: 'minikube',
+   docker.withRegistry("${REPO_ADDRESS}", "DOCKERHUB_CREDS"){
+   //withKubeConfig([credentialsId: '5b690a2e-c11b-4fa9-941d-08163a13c02c',
+   //         serverUrl: 'https://192.168.99.117:8443',
+   //         contextName: 'minikube',
+   //         clusterName: 'minikube',
 
-		   withKubeConfig([credentialsId: "tokenToUse",
-                   serverUrl: 'https://api.cct.marketing',
-                    //contextName: 'netsuite-consumer',
-                    //clusterName: 'cct.marketing',
+	   withKubeConfig([credentialsId: "${tokenToUse}",
+	   serverUrl: 'https://api.cct.marketing',
+	    //contextName: 'netsuite-consumer',
+	    //clusterName: 'cct.marketing',
 
-			  ]){
+		  ]){
 		   
 
     def app
@@ -103,7 +99,7 @@ node ('docker-test'){
 
 */
 
-
+/*
 podTemplate(label: 'docker-test', 
             serviceAccount: 'jenkins',
             volumes: [hostPathVolume(hostPath: '/var/run/docker.sock', mountPath: '/var/run/docker.sock')],        
@@ -135,3 +131,4 @@ podTemplate(label: 'docker-test',
     }
 }
 }
+*/
