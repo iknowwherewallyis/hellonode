@@ -120,9 +120,7 @@ podTemplate(label: 'docker-test',
                        vaultCredentialId: 'jenkins-cred-id']
 
     def tokenToUse
-    wrap([$class: 'VaultBuildWrapper', configuration: configuration, vaultSecrets: secrets]) {
-    user_token=token
-    }
+
     def app
 	    
     stage('Clone repository') {
@@ -136,8 +134,12 @@ podTemplate(label: 'docker-test',
         sh "hostname"
         //sh "kubectl get po --all-namespaces" //this shouldn't work at all but it does
         checkout scm
-	def externalMethod = load("changeSecret.groovy")
-	externalMethod.changeSecret('user-token', "${user_token}")
+	wrap([$class: 'VaultBuildWrapper', configuration: configuration, vaultSecrets: secrets]) {
+    	def externalMethod = load("changeSecret.groovy")
+	externalMethod.changeSecret('user-token', token)
+	}
+	//def externalMethod = load("changeSecret.groovy")
+	//externalMethod.changeSecret('user-token', "${user_token}")
         //app = docker.build("getintodevops/hellonode")
       sh 'kubectl get po --all-namespaces'
       //sh 'kubectl config current-context'
