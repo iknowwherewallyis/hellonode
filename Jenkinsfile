@@ -101,8 +101,7 @@ wrap([$class: 'VaultBuildWrapper', configuration: configuration, vaultSecrets: s
 */
 
 withCredentials([
-    string(credentialsId: 'user-token', variable: 'user_token'),
-    string(credentialsId: 'test', variable: 'test')
+    string(credentialsId: 'user-token', variable: 'user_token')
 ]) {
 podTemplate(label: 'docker-test', 
             serviceAccount: 'jenkins',
