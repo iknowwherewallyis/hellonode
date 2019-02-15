@@ -22,9 +22,9 @@ node ('docker-test'){
                        vaultUrl: 'http://vault.cct.marketing',
                        vaultCredentialId: 'jenkins-cred-id']
 
-  
+       def tokenToUse
 wrap([$class: 'VaultBuildWrapper', configuration: configuration, vaultSecrets: secrets]) {
-     def tokenToUse
+
      tokenToUse="${token}"
 }
   
