@@ -37,7 +37,7 @@ wrap([$class: 'VaultBuildWrapper', configuration: configuration, vaultSecrets: s
    //         contextName: 'minikube',
    //         clusterName: 'minikube',
 
-	   withKubeConfig([credentialsId: 'tokenToUse',
+	   withKubeConfig([credentialsId: 'netsuite-token',
 	   serverUrl: 'https://api.cct.marketing',
 	    //contextName: 'netsuite-consumer',
 	    //clusterName: 'cct.marketing',
