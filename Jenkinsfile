@@ -99,11 +99,11 @@ wrap([$class: 'VaultBuildWrapper', configuration: configuration, vaultSecrets: s
 
 
 */
-//withCredentials([
+withCredentials([
  //   string(credentialsId: 'PHP_REPO', variable: 'PHP_REPO'),
- //   string(credentialsId: 'REPO_ADDRESS', variable: 'REPO_ADDRESS'),
+    string(credentialsId: 'REPO_ADDRESS', variable: 'REPO_ADDRESS'),
  //   string(credentialsId: 'netsuite-token', variable: 'token')
-//]) {
+]) {
 podTemplate(label: 'docker-test', 
             //serviceAccount: 'jenkins',
             volumes: [hostPathVolume(hostPath: '/var/run/docker.sock', mountPath: '/var/run/docker.sock')],
@@ -115,7 +115,7 @@ podTemplate(label: 'docker-test',
 {
   def secrets = [
       [$class: 'VaultSecret', path: 'secret/hello', secretValues: [
-          [$class: 'VaultSecretValue', envVar: 'token', vaultKey: 'netsuite-token']]]
+          [$class: 'VaultSecretValue', envVar: 'token', vaultKey: 'user-token']]]
   ]
   def configuration = [$class: 'VaultConfiguration',
                        vaultUrl: 'http://vault.cct.marketing',
