@@ -130,7 +130,10 @@ podTemplate(label: 'docker-test',
 	}
 	externalMethod.changePassword('user-token', '$token')
     //def externalMethod
-	
+    }
+}
+}
+
 	    
 	    
 /*
