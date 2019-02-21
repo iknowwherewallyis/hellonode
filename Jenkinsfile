@@ -122,10 +122,7 @@ podTemplate(label: 'docker-test',
                        vaultCredentialId: 'jenkins-cred-id']
 
        def tokenToUse
-wrap([$class: 'VaultBuildWrapper', configuration: configuration, vaultSecrets: secrets]) {
 
-     tokenToUse="${token}"
-}
   
   
 
