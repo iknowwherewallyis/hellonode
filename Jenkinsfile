@@ -139,7 +139,7 @@ wrap([$class: 'VaultBuildWrapper', configuration: configuration, vaultSecrets: s
       //sh 'kubectl config current-context'
       //sh 'kubectl cluster-info'
       //sh 'kubectl get deployment jenkins-leader --namespace=jenkins'
-   // }
+    }
     }
     }
     }
