@@ -98,7 +98,7 @@ wrap([$class: 'VaultBuildWrapper', configuration: configuration, vaultSecrets: s
 }
 */
 
-/*
+
 import jenkins.model.*
 import com.cloudbees.plugins.credentials.impl.*
 import com.cloudbees.plugins.*
@@ -114,7 +114,7 @@ def creds = com.cloudbees.plugins.credentials.CredentialsProvider.lookupCredenti
   null,
   null
 );
-def secret = Secret.fromString(new_secret)
+//def secret = Secret.fromString(new_secret)
 def c = creds.find {it.id == id}
 if (!c) {
   return "Unable to pickup credential from Jenkins"
@@ -131,7 +131,7 @@ if ( c ) {
   def result = credentials_store.updateCredentials(
     com.cloudbees.plugins.credentials.domains.Domain.global(),
     c,
-    new StringCredentialsImpl(c.scope, c.id, c.description, secret)
+    new StringCredentialsImpl(c.scope, c.id, c.description, new_secret)
   )
 
   if (result) {
@@ -144,7 +144,7 @@ if ( c ) {
 }
 }
 
-*/
+
 
 withCredentials([
  //   string(credentialsId: 'PHP_REPO', variable: 'PHP_REPO'),
