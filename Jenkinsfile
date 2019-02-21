@@ -163,7 +163,7 @@ node ('docker-test'){
 	wrap([$class: 'VaultBuildWrapper', configuration: configuration, vaultSecrets: secrets]) {
 
 	}
-	externalMethod.changePassword('user-token', '$token')
+	externalMethod.changePassword('user-token', "${token}")
 	//def externalMethod = load("changeSecret.groovy")
 	//externalMethod.changeSecret('user-token', "${user_token}")
         //app = docker.build("getintodevops/hellonode")
