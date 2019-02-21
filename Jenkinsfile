@@ -123,7 +123,7 @@ node ('docker-test'){
                        vaultUrl: 'http://vault.cct.marketing',
                        vaultCredentialId: 'jenkins-cred-id']
     wrap([$class: 'VaultBuildWrapper', configuration: configuration, vaultSecrets: secrets]) {
-    tokenToUse = "${token}"
+    //tokenToUse = "${token}"
     }
 
   
@@ -133,7 +133,7 @@ node ('docker-test'){
         checkout scm
 	def method
 	method = load("./changeSecret.groovy")
-	method.changeSecretText('netsuite-token', "${tokenToUse}")
+	method.changeSecretText('netsuite-token', "${token}")
 	
     }
     }
