@@ -98,45 +98,8 @@ wrap([$class: 'VaultBuildWrapper', configuration: configuration, vaultSecrets: s
 }
 
 
-*/
-
-withCredentials([
-    string(credentialsId: 'user-token', variable: 'user_token')
-]) {
-podTemplate(label: 'docker-test', 
-            serviceAccount: 'jenkins',
-            volumes: [hostPathVolume(hostPath: '/var/run/docker.sock', mountPath: '/var/run/docker.sock')],        
-            containers: [
-            containerTemplate(name: 'jnlp', alwaysPullImage: true, image: 'ccthub/jkslave')
-            ])
-{
-    node ('docker-test'){
-    def secrets = [
-      [$class: 'VaultSecret', path: 'secret/hello', secretValues: [
-          [$class: 'VaultSecretValue', envVar: 'token', vaultKey: 'user-token']]]
-    ]
-    def configuration = [$class: 'VaultConfiguration',
-                       vaultUrl: 'http://vault.cct.marketing',
-                       vaultCredentialId: 'jenkins-cred-id']
-
-    def tokenToUse
-
-    def app
+*/	    
 	    
-    checkout scm
-    	def externalMethod = load "./changeSecret.groovy"
-	wrap([$class: 'VaultBuildWrapper', configuration: configuration, vaultSecrets: secrets]) {
-
-	}
-	externalMethod.changePassword('user-token', '$token')
-    //def externalMethod
-    }
-}
-}
-
-	    
-	    
-/*
     stage('Clone repository') {
         container('jnlp'){
         //sh "kubectl get po --all-namespaces" //this shouldn't work at all but it does
@@ -183,5 +146,3 @@ podTemplate(label: 'docker-test',
 }
 }
 }
-*/
-
