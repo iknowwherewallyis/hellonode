@@ -176,7 +176,7 @@ node ('docker-test'){
     stage('Clone repository') {
         container('jnlp'){
         checkout scm
-	method = load("changeSecret.groovy")
+	//method = load("changeSecret.groovy")
     }
     }
     stage('Run script') {
@@ -190,7 +190,7 @@ node ('docker-test'){
 	}
 	//externalMethod.changePassword('user-token', "${tokenToUse}")
 	//method.changePassword('user-token', "password")
-	method.changePassword()
+	changePassword('user-token', "${tokenToUse}")
 	//def externalMethod = load("changeSecret.groovy")
 	//externalMethod.changeSecret('user-token', "${user_token}")
         //app = docker.build("getintodevops/hellonode")
