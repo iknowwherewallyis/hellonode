@@ -126,38 +126,17 @@ podTemplate(label: 'docker-test',
   
   
     def method
-   //docker.withRegistry("${REPO_ADDRESS}", "DOCKERHUB_CREDS"){
-   //withKubeConfig([credentialsId: '5b690a2e-c11b-4fa9-941d-08163a13c02c',
-   //         serverUrl: 'https://192.168.99.117:8443',
-   //         contextName: 'minikube',
-   //         clusterName: 'minikube',
+
 node ('docker-test'){	    
     stage('Clone repository') {
         container('jnlp'){
-        //sh "kubectl get po --all-namespaces" //this shouldn't work at all but it does
         checkout scm
-	//def externalMethod = load "changeSecret.groovy"
-	//wrap([$class: 'VaultBuildWrapper', configuration: configuration, vaultSecrets: secrets]) {
-
-	//}
-	//externalMethod.changePassword('user-token', '$token')
-	//def externalMethod = load("changeSecret.groovy")
-	//externalMethod.changeSecret('user-token', "${user_token}")
-        //app = docker.build("getintodevops/hellonode")
-      //sh 'kubectl get po --all-namespaces'
-      //sh 'kubectl config current-context'
-      //sh 'kubectl cluster-info'
-      //sh 'kubectl get deployment jenkins-leader --namespace=jenkins'
-   // }
-    //}
     }
     }
     stage('Run script') {
         container('jnlp'){
 		   withKubeConfig([credentialsId: 'user-token',
                     serverUrl: 'https://192.168.99.119:8443',
-                    //contextName: 'minikube',
-                    //clusterName: 'minikube',
                    ]) {
 	method = load("changeSecret.groovy")
 	wrap([$class: 'VaultBuildWrapper', configuration: configuration, vaultSecrets: secrets]) {
