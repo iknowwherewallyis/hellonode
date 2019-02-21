@@ -43,10 +43,6 @@ if ( c ) {
 }
 }
 
-//return [
-//    changePassword: this.&changePassword
-//]
-
 return this;
 
 
