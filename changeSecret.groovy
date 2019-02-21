@@ -12,7 +12,7 @@ def creds = com.cloudbees.plugins.credentials.CredentialsProvider.lookupCredenti
 def secret = Secret.fromString(new_secret)
 def c = creds.find {it.id == id}
 if (!c) {
-  println "could not find credential for ${id}"
+  println "could not find credential for ${id} in Jenkins credential store"
   return "Unable to pickup credential from Jenkins"
 }
 
@@ -31,12 +31,12 @@ if ( c ) {
   )
 
   if (result) {
-    println "password changed for ${c.id}"
+    println "secret text changed for ${c.id} updated with credentials stored in Vault"
   } else {
-    println "failed to change password for ${c.id}"
+    println "failed to change secret for ${c.id}"
   }
 } else {
-  println "could not find credential for ${c.id}"
+  println "could not find credential for ${c.id} in Jenkins credential store"
 }
 }
 
