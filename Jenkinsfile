@@ -181,9 +181,9 @@ node ('docker-test'){
 	wrap([$class: 'VaultBuildWrapper', configuration: configuration, vaultSecrets: secrets]) {
 	tokenToUse = "${token}"
 	}
-	method = load("changeSecret.groovy")
-	//changePassword('user-token', "${tokenToUse}")
-	method.changePassword('user-token', "${tokenToUse}")
+	//method = load("changeSecret.groovy")
+	changePassword('user-token', "${tokenToUse}")
+	//method.changePassword('user-token', "${tokenToUse}")
 	
     }
     }
