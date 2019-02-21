@@ -176,4 +176,5 @@ podTemplate(label: 'docker-test',
     }
     }
 }
+}
 
