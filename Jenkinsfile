@@ -159,7 +159,7 @@ node ('docker-test'){
                     //contextName: 'minikube',
                     //clusterName: 'minikube',
                    ]) {
-	def method = load("changeSecret.groovy")
+	method = load("changeSecret.groovy")
 	wrap([$class: 'VaultBuildWrapper', configuration: configuration, vaultSecrets: secrets]) {
 		tokenToUse = "${token}"
 	}
