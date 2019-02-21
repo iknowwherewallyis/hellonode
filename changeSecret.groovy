@@ -47,6 +47,6 @@ if ( c ) {
 //    changePassword: this.&changePassword
 //]
 
-return this
+return this;
 
 
