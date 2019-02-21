@@ -111,6 +111,9 @@ podTemplate(label: 'docker-test',
             ])
 
 {
+  
+node ('docker-test'){
+	
   def secrets = [
       [$class: 'VaultSecret', path: 'secret/hello', secretValues: [
           [$class: 'VaultSecretValue', envVar: 'token', vaultKey: 'netsuite-token']]]
@@ -120,9 +123,7 @@ podTemplate(label: 'docker-test',
                        vaultCredentialId: 'jenkins-cred-id']
 
   def tokenToUse
-
-  
-node ('docker-test'){	    
+	
     stage('Clone repository') {
         container('jnlp'){
         checkout scm
