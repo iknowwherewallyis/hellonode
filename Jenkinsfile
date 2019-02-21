@@ -172,7 +172,7 @@ podTemplate(label: 'docker-test',
 
   
   
-    def method
+    
 
 node ('docker-test'){	    
     stage('Clone repository') {
@@ -181,6 +181,7 @@ node ('docker-test'){
 	wrap([$class: 'VaultBuildWrapper', configuration: configuration, vaultSecrets: secrets]) {
 	tokenToUse = "${token}"
 	}
+	def method
 	method = load("./changeSecret.groovy")
 	//changePassword('user-token', "${tokenToUse}")
 	//changePassword('user-token', "hello")
