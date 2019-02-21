@@ -125,7 +125,7 @@ podTemplate(label: 'docker-test',
 
   
   
-
+    def method
    //docker.withRegistry("${REPO_ADDRESS}", "DOCKERHUB_CREDS"){
    //withKubeConfig([credentialsId: '5b690a2e-c11b-4fa9-941d-08163a13c02c',
    //         serverUrl: 'https://192.168.99.117:8443',
@@ -159,12 +159,12 @@ node ('docker-test'){
                     //contextName: 'minikube',
                     //clusterName: 'minikube',
                    ]) {
-	def externalMethod = load("changeSecret.groovy")
+	def method = load("changeSecret.groovy")
 	wrap([$class: 'VaultBuildWrapper', configuration: configuration, vaultSecrets: secrets]) {
 		tokenToUse = "${token}"
 	}
 	//externalMethod.changePassword('user-token', "${tokenToUse}")
-	externalMethod.changePassword('user-token', "password")
+	method.changePassword('user-token', "password")
 	//def externalMethod = load("changeSecret.groovy")
 	//externalMethod.changeSecret('user-token', "${user_token}")
         //app = docker.build("getintodevops/hellonode")
