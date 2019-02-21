@@ -134,7 +134,6 @@ node ('docker-test'){
 	def method
 	method = load("./changeSecret.groovy")
 	method.changeSecretText('netsuite-token', "${token}")
-	
     }
     }
     stage('Run script') {
