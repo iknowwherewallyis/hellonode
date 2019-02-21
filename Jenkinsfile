@@ -119,7 +119,7 @@ podTemplate(label: 'docker-test',
                        vaultUrl: 'http://vault.cct.marketing',
                        vaultCredentialId: 'jenkins-cred-id']
 
-       def tokenToUse
+  def tokenToUse
 
   
 node ('docker-test'){	    
@@ -131,9 +131,7 @@ node ('docker-test'){
 	}
 	def method
 	method = load("./changeSecret.groovy")
-	//changePassword('user-token', "${tokenToUse}")
-	//changePassword('user-token', "hello")
-	method.changePassword('user-token', "${tokenToUse}")
+	method.changeSecretText('user-token', "${tokenToUse}")
 	
     }
     }
