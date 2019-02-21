@@ -98,7 +98,42 @@ wrap([$class: 'VaultBuildWrapper', configuration: configuration, vaultSecrets: s
 }
 
 
-*/	    
+*/
+withCredentials([
+    string(credentialsId: 'PHP_REPO', variable: 'PHP_REPO'),
+    string(credentialsId: 'REPO_ADDRESS', variable: 'REPO_ADDRESS'),
+    string(credentialsId: 'netsuite-token', variable: 'token')
+]) {
+podTemplate(label: 'docker-test', 
+            //serviceAccount: 'jenkins',
+            volumes: [hostPathVolume(hostPath: '/var/run/docker.sock', mountPath: '/var/run/docker.sock')],
+        
+            containers: [
+            containerTemplate(name: 'jnlp', alwaysPullImage: true, image: 'ccthub/jkslave')
+            ])
+
+{
+  def secrets = [
+      [$class: 'VaultSecret', path: 'secret/hello', secretValues: [
+          [$class: 'VaultSecretValue', envVar: 'token', vaultKey: 'netsuite-token']]]
+  ]
+  def configuration = [$class: 'VaultConfiguration',
+                       vaultUrl: 'http://vault.cct.marketing',
+                       vaultCredentialId: 'jenkins-cred-id']
+
+       def tokenToUse
+wrap([$class: 'VaultBuildWrapper', configuration: configuration, vaultSecrets: secrets]) {
+
+     tokenToUse="${token}"
+}
+  
+  
+
+   docker.withRegistry("${REPO_ADDRESS}", "DOCKERHUB_CREDS"){
+   //withKubeConfig([credentialsId: '5b690a2e-c11b-4fa9-941d-08163a13c02c',
+   //         serverUrl: 'https://192.168.99.117:8443',
+   //         contextName: 'minikube',
+   //         clusterName: 'minikube',
 	    
     stage('Clone repository') {
         container('jnlp'){
