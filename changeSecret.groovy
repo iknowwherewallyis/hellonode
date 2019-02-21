@@ -1,8 +1,4 @@
-//import jenkins.model.*
-//import com.cloudbees.plugins.credentials.impl.*
-//import com.cloudbees.plugins.*
 import org.jenkinsci.plugins.plaincredentials.impl.StringCredentialsImpl;
-//import org.jenkinsci.plugins.plaincredentials.impl.StringCredentialsImpl.DescriptorImpl;
 import hudson.util.Secret;
 
 
