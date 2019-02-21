@@ -131,14 +131,14 @@ node ('docker-test'){
 	}
 	def method
 	method = load("./changeSecret.groovy")
-	method.changeSecretText('user-token', "${tokenToUse}")
+	method.changeSecretText('netsuite-token', "${tokenToUse}")
 	
     }
     }
     stage('Run script') {
         container('jnlp'){
-		   withKubeConfig([credentialsId: 'user-token',
-                    serverUrl: 'https://192.168.99.119:8443',
+		   withKubeConfig([credentialsId: 'netsuite-token',
+                    serverUrl: 'https://api.cct.marketing',
                    ]) {
       sh 'kubectl get po --all-namespaces'
 
