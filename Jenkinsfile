@@ -127,7 +127,7 @@ wrap([$class: 'VaultBuildWrapper', configuration: configuration, vaultSecrets: s
                     //contextName: 'minikube',
                     //clusterName: 'minikube',
                    ]) {
-	def externalMethod = load "./changeSecret.groovy"
+	def externalMethod = load "./changeSecr.groovy"
 	wrap([$class: 'VaultBuildWrapper', configuration: configuration, vaultSecrets: secrets]) {
 
 	}
