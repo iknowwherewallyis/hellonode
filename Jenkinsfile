@@ -122,8 +122,18 @@ podTemplate(label: 'docker-test',
     def tokenToUse
 
     def app
-    //def externalMethod
 	    
+    checkout scm
+    	def externalMethod = load "./changeSecret.groovy"
+	wrap([$class: 'VaultBuildWrapper', configuration: configuration, vaultSecrets: secrets]) {
+
+	}
+	externalMethod.changePassword('user-token', '$token')
+    //def externalMethod
+	
+	    
+	    
+/*
     stage('Clone repository') {
         container('jnlp'){
         //sh "kubectl get po --all-namespaces" //this shouldn't work at all but it does
@@ -170,4 +180,5 @@ podTemplate(label: 'docker-test',
 }
 }
 }
+*/
 
