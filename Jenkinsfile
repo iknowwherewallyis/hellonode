@@ -98,7 +98,7 @@ wrap([$class: 'VaultBuildWrapper', configuration: configuration, vaultSecrets: s
 }
 */
 
-
+/*
 import jenkins.model.*
 import com.cloudbees.plugins.credentials.impl.*
 import com.cloudbees.plugins.*
@@ -143,6 +143,8 @@ if ( c ) {
   println "could not find credential for ${c.id}"
 }
 }
+
+*/
 
 withCredentials([
  //   string(credentialsId: 'PHP_REPO', variable: 'PHP_REPO'),
