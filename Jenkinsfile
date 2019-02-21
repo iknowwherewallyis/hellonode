@@ -131,7 +131,7 @@ podTemplate(label: 'docker-test',
    //         serverUrl: 'https://192.168.99.117:8443',
    //         contextName: 'minikube',
    //         clusterName: 'minikube',
-	    
+node ('docker-test'){	    
     stage('Clone repository') {
         container('jnlp'){
         //sh "kubectl get po --all-namespaces" //this shouldn't work at all but it does
@@ -176,5 +176,5 @@ podTemplate(label: 'docker-test',
     }
     }
 }
-//}
+}
 
