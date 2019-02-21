@@ -2,7 +2,7 @@ import org.jenkinsci.plugins.plaincredentials.impl.StringCredentialsImpl;
 import hudson.util.Secret;
 
 
-def changePassword(id, new_secret){ //->
+def changePassword(id, new_secret){
 def creds = com.cloudbees.plugins.credentials.CredentialsProvider.lookupCredentials(
   com.cloudbees.plugins.credentials.Credentials.class,
   Jenkins.instance,
