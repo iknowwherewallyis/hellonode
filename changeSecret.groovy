@@ -47,4 +47,3 @@ return [
     changePassword: this.&changePassword
 ]
 
-changePassword('user-token', 's3crEt!')
