@@ -12,7 +12,7 @@ def creds = com.cloudbees.plugins.credentials.CredentialsProvider.lookupCredenti
 def secret = Secret.fromString(new_secret)
 def c = creds.find {it.id == id}
 if (!c) {
-  println "could not find credential for ${c.id}"
+  println "could not find credential for ${id}"
   return "Unable to pickup credential from Jenkins"
 }
 
