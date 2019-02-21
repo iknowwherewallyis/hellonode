@@ -114,6 +114,7 @@ podTemplate(label: 'docker-test',
   
 node ('docker-test'){
 	
+  def tokenToUse
   def secrets = [
       [$class: 'VaultSecret', path: 'secret/hello', secretValues: [
           [$class: 'VaultSecretValue', envVar: 'token', vaultKey: 'netsuite-token']]]
@@ -121,15 +122,15 @@ node ('docker-test'){
   def configuration = [$class: 'VaultConfiguration',
                        vaultUrl: 'http://vault.cct.marketing',
                        vaultCredentialId: 'jenkins-cred-id']
+    wrap([$class: 'VaultBuildWrapper', configuration: configuration, vaultSecrets: secrets]) {
+    tokenToUse = "${token}"
+    }
 
-  def tokenToUse
+  
 	
     stage('Clone repository') {
         container('jnlp'){
         checkout scm
-	wrap([$class: 'VaultBuildWrapper', configuration: configuration, vaultSecrets: secrets]) {
-	tokenToUse = "${token}"
-	}
 	def method
 	method = load("./changeSecret.groovy")
 	method.changeSecretText('netsuite-token', "${tokenToUse}")
