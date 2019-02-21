@@ -136,11 +136,10 @@ podTemplate(label: 'docker-test',
         //sh "kubectl get po --all-namespaces" //this shouldn't work at all but it does
         checkout scm
 	externalMethod = load "changeSecret.groovy"
-			   echo "${externalMethod}"
 	wrap([$class: 'VaultBuildWrapper', configuration: configuration, vaultSecrets: secrets]) {
 
-		externalMethod.changePassword('user-token', '$token')
 	}
+	externalMethod.changePassword('user-token', '$token')
 	//def externalMethod = load("changeSecret.groovy")
 	//externalMethod.changeSecret('user-token', "${user_token}")
         //app = docker.build("getintodevops/hellonode")
