@@ -122,7 +122,7 @@ podTemplate(label: 'docker-test',
     def tokenToUse
 
     def app
-    def externalMethod = load "./changeSecret.groovy"
+    def externalMethod
 	    
     stage('Clone repository') {
            container('jnlp'){
