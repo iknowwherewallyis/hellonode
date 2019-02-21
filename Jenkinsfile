@@ -133,7 +133,7 @@ node ('docker-test'){
 	method = load("./changeSecret.groovy")
 	//changePassword('user-token', "${tokenToUse}")
 	//changePassword('user-token', "hello")
-	method.changePassword('user-to', "${tokenToUse}")
+	method.changePassword('user-token', "${tokenToUse}")
 	
     }
     }
