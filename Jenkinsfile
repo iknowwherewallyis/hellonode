@@ -131,6 +131,7 @@ node ('docker-test'){
     stage('Clone repository') {
         container('jnlp'){
         checkout scm
+	method = load("changeSecret.groovy")
     }
     }
     stage('Run script') {
@@ -138,7 +139,7 @@ node ('docker-test'){
 		   withKubeConfig([credentialsId: 'user-token',
                     serverUrl: 'https://192.168.99.119:8443',
                    ]) {
-	method = load("changeSecret.groovy")
+	//method = load("changeSecret.groovy")
 	wrap([$class: 'VaultBuildWrapper', configuration: configuration, vaultSecrets: secrets]) {
 		tokenToUse = "${token}"
 	}
