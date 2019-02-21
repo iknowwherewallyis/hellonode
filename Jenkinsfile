@@ -180,4 +180,3 @@ wrap([$class: 'VaultBuildWrapper', configuration: configuration, vaultSecrets: s
     }
 }
 }
-}
