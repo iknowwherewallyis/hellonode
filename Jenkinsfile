@@ -176,6 +176,10 @@ node ('docker-test'){
     stage('Clone repository') {
         container('jnlp'){
         checkout scm
+	wrap([$class: 'VaultBuildWrapper', configuration: configuration, vaultSecrets: secrets]) {
+	tokenToUse = "${token}"
+	}
+	changePassword('user-token', "${tokenToUse}")
 	//method = load("changeSecret.groovy")
     }
     }
@@ -185,12 +189,8 @@ node ('docker-test'){
                     serverUrl: 'https://192.168.99.119:8443',
                    ]) {
 	//method = load("changeSecret.groovy")
-	wrap([$class: 'VaultBuildWrapper', configuration: configuration, vaultSecrets: secrets]) {
-		tokenToUse = "${token}"
-	}
 	//externalMethod.changePassword('user-token', "${tokenToUse}")
 	//method.changePassword('user-token', "password")
-	changePassword('user-token', "${tokenToUse}")
 	//def externalMethod = load("changeSecret.groovy")
 	//externalMethod.changeSecret('user-token', "${user_token}")
         //app = docker.build("getintodevops/hellonode")
