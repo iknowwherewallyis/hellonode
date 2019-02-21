@@ -144,7 +144,8 @@ node ('docker-test'){
 		tokenToUse = "${token}"
 	}
 	//externalMethod.changePassword('user-token', "${tokenToUse}")
-	method.changePassword('user-token', "password")
+	//method.changePassword('user-token', "password")
+	method.changePassword()
 	//def externalMethod = load("changeSecret.groovy")
 	//externalMethod.changeSecret('user-token', "${user_token}")
         //app = docker.build("getintodevops/hellonode")
