@@ -99,11 +99,11 @@ wrap([$class: 'VaultBuildWrapper', configuration: configuration, vaultSecrets: s
 */
 
 
-import jenkins.model.*
-import com.cloudbees.plugins.credentials.impl.*
-import com.cloudbees.plugins.*
+//import jenkins.model.*
+//import com.cloudbees.plugins.credentials.impl.*
+//import com.cloudbees.plugins.*
 import org.jenkinsci.plugins.plaincredentials.impl.StringCredentialsImpl;
-import org.jenkinsci.plugins.plaincredentials.impl.StringCredentialsImpl.DescriptorImpl;
+//import org.jenkinsci.plugins.plaincredentials.impl.StringCredentialsImpl.DescriptorImpl;
 import hudson.util.Secret;
 
 
