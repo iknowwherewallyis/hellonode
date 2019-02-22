@@ -28,7 +28,7 @@ if ( c ) {
     'com.cloudbees.plugins.credentials.SystemCredentialsProvider'
   )[0].getStore()
   
-  println "${credentials_store.domain}"
+  println "${credentials_store}"
 
   def result = credentials_store.updateCredentials(
     com.cloudbees.plugins.credentials.domains.Domain.getDomainByName('docker-pipeline-test'),
