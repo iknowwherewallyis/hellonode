@@ -8,8 +8,7 @@ def creds = com.cloudbees.plugins.credentials.CredentialsProvider.lookupCredenti
   com.cloudbees.plugins.credentials.Credentials.class,
   Jenkins.instance,
   null,
-  Collections.global emptyList()
-);
+  Collections.global emptyList());
   
 def secret = Secret.fromString(new_secret)
 def c = creds.find {it.id == id}
