@@ -5,13 +5,13 @@ import com.cloudbees.plugins.credentials.domains.*
 
 def changeSecretText(id, new_secret){
  
-DomainRequirement domainRequire = 'docker-test';
+Domain domain = new Domain('docker-test')
  
 def creds = com.cloudbees.plugins.credentials.CredentialsProvider.lookupCredentials(
   com.cloudbees.plugins.credentials.Credentials.class,
   Jenkins.instance,
   null,
-  domainRequire
+  domain
   );
   
 def secret = Secret.fromString(new_secret)
@@ -34,7 +34,7 @@ if ( c ) {
   println "${credentials_store}"
 
   def result = credentials_store.updateCredentials(
-    com.cloudbees.plugins.credentials.domains.Domain.getDomainByName('docker-pipeline-test'),
+    com.cloudbees.plugins.credentials.domains.Domain.global,
     //com.cloudbees.plugins.credentials.domains.Domain.job(),
     c,
     new StringCredentialsImpl(c.scope, c.id, c.description, secret)
