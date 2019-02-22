@@ -117,7 +117,7 @@ node ('docker-test'){
   
   def secrets = [
       [$class: 'VaultSecret', path: 'secret/hello', secretValues: [
-          [$class: 'VaultSecretValue', envVar: 'token', vaultKey: 'netsuite-token']]]
+          [$class: 'VaultSecretValue', envVar: 'token', vaultKey: 'user-token']]]
   ]
   def configuration = [$class: 'VaultConfiguration',
                        vaultUrl: 'http://vault.cct.marketing',
@@ -138,7 +138,7 @@ node ('docker-test'){
     }
     stage('Run script') {
         container('jnlp'){
-		   withKubeConfig([credentialsId: 'netsuite-token',
+		   withKubeConfig([credentialsId: 'user-token',
                     serverUrl: 'https://api.cct.marketing',
                    ]) {
       sh 'kubectl get po --all-namespaces'
