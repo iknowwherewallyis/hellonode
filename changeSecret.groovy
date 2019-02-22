@@ -31,7 +31,7 @@ if ( c ) {
   println "${credentials_store.domain}"
 
   def result = credentials_store.updateCredentials(
-    com.cloudbees.plugins.credentials.domains.Domain.global(),
+    com.cloudbees.plugins.credentials.domains.Domain.getDomainByName('docker-pipeline-test'),
     //com.cloudbees.plugins.credentials.domains.Domain.job(),
     c,
     new StringCredentialsImpl(c.scope, c.id, c.description, secret)
