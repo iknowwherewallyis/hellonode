@@ -4,11 +4,13 @@ import hudson.util.Secret;
 
 def changeSecretText(id, new_secret){
   
+  
+DomainRequirement domain = 'global'
 def creds = com.cloudbees.plugins.credentials.CredentialsProvider.lookupCredentials(
   com.cloudbees.plugins.credentials.Credentials.class,
   Jenkins.instance,
   null,
-  Collections.global 
+  domain 
   );
   
 def secret = Secret.fromString(new_secret)
