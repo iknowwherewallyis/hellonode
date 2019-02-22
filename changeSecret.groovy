@@ -5,7 +5,7 @@ import com.cloudbees.plugins.credentials.domains.*
 
 def changeSecretText(id, new_secret){
  
-DomainRequirement domain = new DomainRequirement(scope = GLOBAL)
+DomainRequirement domain = new DomainRequirement(scope = 'GLOBAL')
  
 def creds = com.cloudbees.plugins.credentials.CredentialsProvider.lookupCredentials(
   com.cloudbees.plugins.credentials.Credentials.class,
