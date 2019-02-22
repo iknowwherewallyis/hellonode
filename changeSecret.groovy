@@ -5,7 +5,7 @@ import com.cloudbees.plugins.credentials.domains.*
 
 def changeSecretText(id, new_secret){
  
-Domain domain = new Domain('docker-test')
+Domain domain = new Domain('docker-test', null, Collections.<DomainSpecification>emptyList())
  
 def creds = com.cloudbees.plugins.credentials.CredentialsProvider.lookupCredentials(
   com.cloudbees.plugins.credentials.Credentials.class,
