@@ -5,13 +5,13 @@ import com.cloudbees.plugins.credentials.domains.*
 
 def changeSecretText(id, new_secret){
  
-DomainRequirement domain = new DomainRequirement(scope = 'GLOBAL')
+DomainRequirement domain = new DomainRequirement()
  
 def creds = com.cloudbees.plugins.credentials.CredentialsProvider.lookupCredentials(
   com.cloudbees.plugins.credentials.Credentials.class,
   Jenkins.instance,
   null,
-  domain
+  domain.global()
   );
   
 def secret = Secret.fromString(new_secret)
