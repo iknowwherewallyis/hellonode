@@ -1,4 +1,3 @@
-
 import org.jenkinsci.plugins.plaincredentials.impl.StringCredentialsImpl;
 import hudson.util.Secret;
 
@@ -14,6 +13,9 @@ def creds = com.cloudbees.plugins.credentials.CredentialsProvider.lookupCredenti
   
 def secret = Secret.fromString(new_secret)
 def c = creds.find {it.id == id}
+
+println "${c.scope}"
+/*
 if (!c) {
   println "could not find credential for ${id} in Jenkins credential store"
   return "Unable to pickup credential from Jenkins"
@@ -42,6 +44,7 @@ if ( c ) {
   }
 } else {
   println "could not find credential for ${c.id} in Jenkins credential store"
+*/
 }
 }
 
