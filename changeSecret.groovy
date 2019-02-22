@@ -5,13 +5,13 @@ import com.cloudbees.plugins.credentials.domains.*
 
 def changeSecretText(id, new_secret){
  
-DomainRequirement domainRequire;
+DomainRequirement domainRequire = 'docker-test';
  
 def creds = com.cloudbees.plugins.credentials.CredentialsProvider.lookupCredentials(
   com.cloudbees.plugins.credentials.Credentials.class,
   Jenkins.instance,
   null,
-  domainRequire.global()
+  domainRequire
   );
   
 def secret = Secret.fromString(new_secret)
