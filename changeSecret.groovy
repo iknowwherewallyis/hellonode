@@ -45,6 +45,7 @@ if ( c ) {
 }
 */
 }
+}
 return this;
 
 
