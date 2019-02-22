@@ -8,7 +8,7 @@ def creds = com.cloudbees.plugins.credentials.CredentialsProvider.lookupCredenti
   com.cloudbees.plugins.credentials.Credentials.class,
   Jenkins.instance,
   null,
-  'global'
+  global
 );
   
 def secret = Secret.fromString(new_secret)
