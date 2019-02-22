@@ -3,12 +3,14 @@ import hudson.util.Secret;
 
 
 def changeSecretText(id, new_secret){
+  
 def creds = com.cloudbees.plugins.credentials.CredentialsProvider.lookupCredentials(
   com.cloudbees.plugins.credentials.Credentials.class,
   Jenkins.instance,
   null,
   null
 );
+  
 def secret = Secret.fromString(new_secret)
 def c = creds.find {it.id == id}
 if (!c) {
@@ -23,9 +25,9 @@ if ( c ) {
     'com.cloudbees.plugins.credentials.SystemCredentialsProvider'
   )[0].getStore()
 
-
   def result = credentials_store.updateCredentials(
-    com.cloudbees.plugins.credentials.domains.Domain.global(),
+    //com.cloudbees.plugins.credentials.domains.Domain.global(),
+    com.cloudbees.plugins.credentials.domains.Domain.job(),
     c,
     new StringCredentialsImpl(c.scope, c.id, c.description, secret)
   )
