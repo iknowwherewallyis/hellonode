@@ -13,10 +13,10 @@ def creds = com.cloudbees.plugins.credentials.CredentialsProvider.lookupCredenti
   
 def secret = Secret.fromString(new_secret)
 def c = creds.find {it.id == id}
-//if (!c) {
-//  println "could not find credential for ${id} in Jenkins credential store"
-//  return "Unable to pickup credential from Jenkins"
-//}
+if (!c) {
+  println "could not find credential for ${id} in Jenkins credential store"
+  return "Unable to pickup credential from Jenkins"
+}
 
 if ( c ) {
   println "found credential ${c.id}"
@@ -26,7 +26,7 @@ if ( c ) {
   )[0].getStore().getDomains()
   
   println "${credentials_store}"
-/*
+
   def result = credentials_store.updateCredentials(
     //com.cloudbees.plugins.credentials.domains.Domain.global(),
     com.cloudbees.plugins.credentials.domains.Domain.job(),
@@ -43,9 +43,7 @@ if ( c ) {
   println "could not find credential for ${c.id} in Jenkins credential store"
 }
 }
-*/
-}
-}
+
 return this;
 
 
