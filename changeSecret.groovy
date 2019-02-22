@@ -3,13 +3,14 @@ import hudson.util.Secret;
 
 
 def changeSecretText(id, new_secret){
-  
+ 
+ List<DomainRequirement> domainRequirements = new ArrayList<DomainRequirement>();
  
 def creds = com.cloudbees.plugins.credentials.CredentialsProvider.lookupCredentials(
   com.cloudbees.plugins.credentials.Credentials.class,
   Jenkins.instance,
   null,
-  Domain.global() 
+  domainRequirements
   );
   
 def secret = Secret.fromString(new_secret)
