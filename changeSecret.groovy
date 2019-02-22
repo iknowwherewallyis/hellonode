@@ -1,3 +1,4 @@
+
 import org.jenkinsci.plugins.plaincredentials.impl.StringCredentialsImpl;
 import hudson.util.Secret;
 
