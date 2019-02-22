@@ -1,5 +1,6 @@
 import org.jenkinsci.plugins.plaincredentials.impl.StringCredentialsImpl;
 import hudson.util.Secret;
+import com.cloudbees.plugins.credentials.domains.*
 
 
 def changeSecretText(id, new_secret){
