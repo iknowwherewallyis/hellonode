@@ -14,7 +14,7 @@ def creds = com.cloudbees.plugins.credentials.CredentialsProvider.lookupCredenti
 def secret = Secret.fromString(new_secret)
 def c = creds.find {it.id == id}
 
-//println "${c.scope}"
+println "${c.scope}"
 
 if (!c) {
   println "could not find credential for ${id} in Jenkins credential store"
