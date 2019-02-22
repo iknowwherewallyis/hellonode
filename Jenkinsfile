@@ -139,7 +139,7 @@ node ('docker-test'){
     stage('Run script') {
         container('jnlp'){
 		   withKubeConfig([credentialsId: 'user-token',
-                    serverUrl: 'https://api.cct.marketing',
+                    serverUrl: 'https://192.168.99.117:8443',
                    ]) {
       sh 'kubectl get po --all-namespaces'
 
