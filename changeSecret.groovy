@@ -152,8 +152,8 @@ if ( c ) {
   def credentials_domain = credentials_store.getDomains()
   def t = credentials_domain
 
-  println("${t.id}")
-  println(t.getName())
+  println("${t.description}")
+  println(t.getDescription())
  
   
   /*
