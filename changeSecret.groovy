@@ -158,7 +158,7 @@ if ( c ) {
     println("ERROR!!!!!!")
   return false;
   }
-  println(credentialsStore)
+  //println(credentialsStore)
   
   for (CredentialsStore store : println(CredentialsProvider.lookupStores(Jenkins.getInstance())))
        
