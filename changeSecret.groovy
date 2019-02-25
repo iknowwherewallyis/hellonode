@@ -149,7 +149,7 @@ if ( c ) {
   )[0].getStore()
   
   
-  def cut = credentials_store.getDisplayName()
+  def cut = credentials_store
   println("${credentials_store}")
   println(cut)
   
