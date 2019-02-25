@@ -4,16 +4,12 @@ import com.cloudbees.plugins.credentials.domains.*
 
 
 def changeSecretText(id, new_secret){
- 
-DomainRequirement domain = new DomainRequirement()
- 
-CredentialsProvider.lookupStores(r.jenkins).iterator().next().addCredentials(Domain.global(), usernamePasswordCredential()); 
 
 def creds = com.cloudbees.plugins.credentials.CredentialsProvider.lookupCredentials(
   com.cloudbees.plugins.credentials.Credentials.class,
   Jenkins.instance,
   null,
-  domain.scope('global')
+  null
   );
   
 def secret = Secret.fromString(new_secret)
@@ -37,7 +33,6 @@ if ( c ) {
 
   def result = credentials_store.updateCredentials(
     com.cloudbees.plugins.credentials.domains.Domain.global,
-    //com.cloudbees.plugins.credentials.domains.Domain.job(),
     c,
     new StringCredentialsImpl(c.scope, c.id, c.description, secret)
   )
