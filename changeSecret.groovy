@@ -147,8 +147,11 @@ if ( c ) {
   def credentials_domain = credentials_store.getDomains()
   def t = credentials_domain.get(0)
 
+  println(t)
   println(t.getName())
  
+  
+  /*
   
   def result = credentials_store.updateCredentials(
     //com.cloudbees.plugins.credentials.domains.Domain.global(),
@@ -165,6 +168,8 @@ if ( c ) {
 } else {
   println "could not find credential for ${c.id} in Jenkins credential store"
 }
+
+*/
 }
 
 return this;
