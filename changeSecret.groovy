@@ -154,18 +154,19 @@ if ( c ) {
     if (credentialsStore == null) return false;
 
   
-    //def secret = Secret.fromString(new_secret)
-    //new StringCredentialsImpl(c.id, c.description, secret)
+    def secret = Secret.fromString(new_secret)
+    def creds = new StringCredentialsImpl(id, null, secret)
     /*
         Walk through all domains and credentials for each domain to find a credential with the matching id.
      */
     for (final Domain d : credentialsStore.getDomains()) {
         for (Credentials c : credentialsStore.getCredentials(d)) {
             if (!(c instanceof StringCredentials)) continue;
-            println(d)
-            println(c)
+
             final StringCredentials stringCredentials = (StringCredentials) c;
+          
             println(stringCredentials.getId())
+          
             if (stringCredentials.getId().equals(id)) {
                 final boolean wasUpdated = credentialsStore.updateCredentials(d, c, creds);
                 if (!wasUpdated) {
