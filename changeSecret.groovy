@@ -121,7 +121,11 @@ def changeSecretText(job){
 
 
   CredentialsProvider.listCredentials(
-    StringCredentials.class
+    StringCredentials.class,
+    null,
+    null,
+    null,
+    null
 );
  //def creds = CredentialsProvider.listCredentials(
  //   StringCredentials.class, 
