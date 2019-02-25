@@ -125,7 +125,7 @@ def changeSecretText(){
     def list = hi.getItems(Job)  
   println "${list}"
   for (l in list){
-    println(l.id)
+    println(l)
   }
 //f creds = CredentialsProvider.listCredentials(
 //  StringCredentials.class,
