@@ -122,18 +122,16 @@ def changeSecretText(id, new_secret){
   
   def hi = Hudson.instance
   def job = hi.getJob('docker-test')  
-  
-  /*
-  //def creds = com.cloudbees.plugins.credentials.CredentialsProvider.lookupCredentials(
-  //com.cloudbees.plugins.credentials.Credentials.class,
-  
+    
   def creds = com.cloudbees.plugins.credentials.CredentialsProvider.lookupCredentials(
   StringCredentials.class,
   job,
   null,
   null
   );
-  
+  for (c in creds){
+    println(c.id)
+  }
 
 def c = creds.find {it.id == id}
 
@@ -141,7 +139,7 @@ if (!c) {
   println "could not find credential for ${id} in Jenkins credential store"
   return "Unable to pickup credential from Jenkins"
 }
-
+/*
 if ( c ) {
   println "found credential ${c.id}"
 */
