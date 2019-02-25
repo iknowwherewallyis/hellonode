@@ -122,11 +122,11 @@ def changeSecretText(){
 //Job job = jenkins.createFreeStyleProject("testAvailableCredentialsInJob");
 
     def hi = Hudson.instance
-    def list = hi.getItems(Job)  
+    def list = hi.getJob('docker-test')  
   println "${list}"
-  for (l in list){
-    println(l)
-  }
+  //for (l in list){
+  //  println(l)
+ // }
 //f creds = CredentialsProvider.listCredentials(
 //  StringCredentials.class,
 //  Jenkins.getInstance(),
