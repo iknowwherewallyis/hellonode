@@ -134,7 +134,9 @@ def changeSecretText(id, new_secret){
 def secret = Secret.fromString(new_secret)
 def c = creds.find {it.id == id}
 
-  println("${creds}")
+  println("${c.scope}")
+  println("${c.id}")
+  println("${c.description}")
 
 
 if (!c) {
