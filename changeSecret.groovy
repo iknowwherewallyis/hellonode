@@ -174,7 +174,7 @@ if ( c ) {
 
             final StringCredentials stringCredentials = (StringCredentials) c;
           
-            println(stringCredentials.getId())
+            //println(stringCredentials.getId())
           
             if (stringCredentials.getId().equals(id)) {
                 final boolean wasUpdated = credentialsStore.updateCredentials(d, c, creds);
