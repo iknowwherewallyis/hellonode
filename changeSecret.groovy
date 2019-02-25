@@ -7,6 +7,8 @@ def changeSecretText(id, new_secret){
  
 DomainRequirement domain = new DomainRequirement()
  
+CredentialsProvider.lookupStores(r.jenkins).iterator().next().addCredentials(Domain.global(), usernamePasswordCredential()); 
+
 def creds = com.cloudbees.plugins.credentials.CredentialsProvider.lookupCredentials(
   com.cloudbees.plugins.credentials.Credentials.class,
   Jenkins.instance,
