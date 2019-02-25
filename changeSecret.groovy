@@ -44,10 +44,11 @@ def changeSecretText(id, new_secret){
     StringCredentials.class, 
     job, 
     job instanceof Queue.Task 
-      ? Tasks.getAuthenticationOf((Queue.Task)job)) 
+      ? Tasks.getAuthenticationOf((Queue.Task)job) 
       : ACL.SYSTEM,
-    URIRequirementBuilder.fromUri(scmUrl), 
-    null 
+    //URIRequirementBuilder.fromUri(scmUrl), 
+    null,
+    null
 );
 //def creds = com.cloudbees.plugins.credentials.CredentialsProvider.lookupCredentials(
 //        com.cloudbees.plugins.credentials.Credentials.class,
