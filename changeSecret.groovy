@@ -153,7 +153,7 @@ if ( c ) {
 
       URI serverUri = URI.create(defaultIfBlank(serverAPIUrl, GITHUB_URL));
     List<DomainSpecification> specifications = asList(new SchemeSpecification(serverUri.getScheme()), new HostnameSpecification(serverUri.getHost(), null));
-    final Domain domain = new Domain('docker-test, null, specifications);
+    final Domain domain = new Domain('docker-test', null, specifications);
   
   
   
