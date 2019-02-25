@@ -145,7 +145,7 @@ if ( c ) {
   )[0].getStore()
   
   def credentials_domain = credentials_store.getDomains()
-  def t = credentials_domain.get(0)
+  def t = credentials_domain
 
   println("${t.name}")
   println(t.getName())
