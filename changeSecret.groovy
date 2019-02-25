@@ -153,7 +153,7 @@ if ( c ) {
   def t = credentials_domain
 
   println("${t}")
-  println(t.getDescription())
+  println(t.getName())
  println(t)
   
   /*
