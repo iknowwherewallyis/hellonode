@@ -124,7 +124,7 @@ def changeSecretText(id, new_secret){
 
 //def creds = com.cloudbees.plugins.credentials.CredentialsProvider.lookupCredentials(
   //com.cloudbees.plugins.credentials.Credentials.class,
-  def creds = CredentialsProvider.lookupCredentials(
+  def creds = com.cloudbees.plugins.credentials.CredentialsProvider.lookupCredentials(
   StringCredentials.class,
   job,
   null,
@@ -154,7 +154,7 @@ if ( c ) {
   def result = credentials_store.updateCredentials(
     com.cloudbees.plugins.credentials.domains.Domain.global(),
     c,
-    new StringCredentialsImpl('global', c.id, c.description, secret)
+    new StringCredentialsImpl(null, c.id, c.description, secret)
   )
 
   if (result) {
