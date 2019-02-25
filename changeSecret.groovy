@@ -140,9 +140,14 @@ if (!c) {
 if ( c ) {
   println "found credential ${c.id}"
 
+ // def credentials_store = Jenkins.instance.getExtensionList(
+ //   'com.cloudbees.plugins.credentials.SystemCredentialsProvider'
+//  )[0].getStore()
+  
   def credentials_store = Jenkins.instance.getExtensionList(
-    'com.cloudbees.plugins.credentials.SystemCredentialsProvider'
-  )[0].getStore()
+  'com.cloudbees.plugins.credentials.SystemCredentialsProvider'
+  ).getStore(job)
+  
   
   def credentials_domain = credentials_store.getDomains()
   def t = credentials_domain
