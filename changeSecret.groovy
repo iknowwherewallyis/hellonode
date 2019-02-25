@@ -123,7 +123,7 @@ Job job = jenkins.createFreeStyleProject("testAvailableCredentialsInJob");
 
     def hi = Hudson.instance
     def list = hi.getItems(Job)  
-  println "${list}
+  println "${list}"
 //f creds = CredentialsProvider.listCredentials(
 //  StringCredentials.class,
 //  Jenkins.getInstance(),
