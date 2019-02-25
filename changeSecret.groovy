@@ -169,6 +169,7 @@ if ( c ) {
         Walk through all domains and credentials for each domain to find a credential with the matching id.
      */
     for (final Domain d : credentialsStore.getDomainByName('docker-test')) {
+      println(d)
         for (Credentials c : credentialsStore.getCredentials(d)) {
             if (!(c instanceof StringCredentials)) continue;
 
