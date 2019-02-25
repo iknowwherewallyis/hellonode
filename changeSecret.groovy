@@ -40,6 +40,18 @@ import java.util.UUID;
 
 def changeSecretText(id, new_secret){
 
+def creds = com.cloudbees.plugins.credentials.CredentialsProvider.lookupCredentials(
+        com.cloudbees.plugins.credentials.Credentials.class,
+        Jenkins.instance,
+        null,
+        null
+);
+for (c in creds) {
+    println(c.id + ": " + c.description)
+}  
+  
+  
+/*
 //def creds = com.cloudbees.plugins.credentials.CredentialsProvider.lookupCredentials(
   //com.cloudbees.plugins.credentials.Credentials.class,
   def creds = CredentialsProvider.lookupCredentials(
@@ -82,6 +94,8 @@ if ( c ) {
 } else {
   println "could not find credential for ${c.id} in Jenkins credential store"
 }
+}
+*/
 }
 return this;
 
