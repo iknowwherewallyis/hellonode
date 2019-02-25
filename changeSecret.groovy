@@ -153,8 +153,8 @@ if ( c ) {
   println("${credentials_store}")
   println(cut)
   
-  def credentials_domain = credentials_store.getDomains().get(0)
-  def t = credentials_domain
+  def credentials_domain = credentials_store.getDomains()
+  def t = credentials_domain[0]
 
   println("${t}")
   println(t.getName())
