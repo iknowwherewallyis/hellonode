@@ -131,7 +131,7 @@ def changeSecretText(id, new_secret){
   null
   );
   
-def secret = Secret.fromString(new_secret)
+
 def c = creds.find {it.id == id}
 
 if (!c) {
@@ -153,7 +153,9 @@ if ( c ) {
       final CredentialsStore credentialsStore = systemProvider.getStore(Jenkins.getInstance());
     if (credentialsStore == null) return false;
 
-
+  
+    def secret = Secret.fromString(new_secret)
+    new StringCredentialsImpl(c.id, c.description, secret)
     /*
         Walk through all domains and credentials for each domain to find a credential with the matching id.
      */
@@ -163,6 +165,7 @@ if ( c ) {
             println(d)
             println(c)
             final StringCredentials stringCredentials = (StringCredentials) c;
+            println(stringCredentials.getId())
             if (stringCredentials.getId().equals(id)) {
                 final boolean wasUpdated = credentialsStore.updateCredentials(d, c, creds);
                 if (!wasUpdated) {
