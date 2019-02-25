@@ -120,7 +120,7 @@ import org.kohsuke.stapler.StaplerRequest;
 def changeSecretText(job){
 
 
-  CredentialsProvider.listCredentials(
+def creds = CredentialsProvider.listCredentials(
     StringCredentials.class,
     Jenkins.getInstance(),
     null,
