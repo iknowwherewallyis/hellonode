@@ -143,8 +143,33 @@ if ( c ) {
  // def credentials_store = Jenkins.instance.getExtensionList(
  //   'com.cloudbees.plugins.credentials.SystemCredentialsProvider'
 //  )[0].getStore()
+      final CredentialsStore credentialsStore = systemProvider.getStore(Jenkins.getInstance());
+    if (credentialsStore == null) return false;
+
+    /*
+        Walk through all domains and credentials for each domain to find a credential with the matching id.
+     */
+    for (final Domain d : credentialsStore.getDomains()) {
+        for (Credentials c : credentialsStore.getCredentials(d)) {
+            if (!(c instanceof StringCredentials)) continue;
+
+            final StringCredentials stringCredentials = (StringCredentials) c;
+            if (stringCredentials.getId().equals(tokenId)) {
+                final boolean wasUpdated = credentialsStore.updateCredentials(d, c, creds);
+                if (!wasUpdated) {
+                    LOGGER.warning("Updating Token credential failed during update call.");
+                }
+                return wasUpdated;
+            }
+        }
+    }
+  
   
   def credentials_store = Jenkins.instance.getExtensionList(
+  'com.cloudbees.plugins.credentials.SystemCredentialsProvider'
+  )[0].getStore()
+  
+    def credentials_domain = Jenkins.instance.getExtensionList(
   'com.cloudbees.plugins.credentials.SystemCredentialsProvider'
   )[0].getStore().getDomains()
   
@@ -155,13 +180,13 @@ if ( c ) {
   
   //def credentials_domain = credentials_store.getDomains()
 
-  /*
+  
   
   def result = credentials_store.updateCredentials(
     //com.cloudbees.plugins.credentials.domains.Domain.global(),
     credentials_domain,
     c,
-    new StringCredentialsImpl(null, c.id, c.description, secret)
+    new StringCredentialsImpl(c.id, c.description, secret)
   )
 
   if (result) {
