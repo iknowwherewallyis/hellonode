@@ -157,10 +157,10 @@ if ( c ) {
     //final Domain domain = new Domain('docker-test', null, specifications);
   
   def result = credentials_store.updateCredentials(
-    com.cloudbees.plugins.credentials.domains.Domain.global(),
-    //domain,
+    //com.cloudbees.plugins.credentials.domains.Domain.global(),
+    credentials_domain,
     c,
-    new StringCredentialsImpl(c.scope, c.id, c.description, secret)
+    new StringCredentialsImpl(credentials_domain, c.id, c.description, secret)
   )
 
   if (result) {
