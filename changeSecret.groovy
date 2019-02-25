@@ -118,6 +118,8 @@ import org.kohsuke.stapler.StaplerRequest;
 
 def changeSecretText(id, new_secret){
 
+  
+  /*
   def hi = Hudson.instance
   def job = hi.getJob('docker-test')  
   //def creds = com.cloudbees.plugins.credentials.CredentialsProvider.lookupCredentials(
@@ -139,12 +141,13 @@ if (!c) {
 
 if ( c ) {
   println "found credential ${c.id}"
-
- // def credentials_store = Jenkins.instance.getExtensionList(
- //   'com.cloudbees.plugins.credentials.SystemCredentialsProvider'
+*/
+//  def credentials_store = Jenkins.instance.getExtensionList(
+//    'com.cloudbees.plugins.credentials.SystemCredentialsProvider'
 //  )[0].getStore()
       final CredentialsStore credentialsStore = systemProvider.getStore(Jenkins.getInstance());
     if (credentialsStore == null) return false;
+
 
     /*
         Walk through all domains and credentials for each domain to find a credential with the matching id.
@@ -154,7 +157,7 @@ if ( c ) {
             if (!(c instanceof StringCredentials)) continue;
 
             final StringCredentials stringCredentials = (StringCredentials) c;
-            if (stringCredentials.getId().equals(tokenId)) {
+            if (stringCredentials.getId().equals(id)) {
                 final boolean wasUpdated = credentialsStore.updateCredentials(d, c, creds);
                 if (!wasUpdated) {
                     LOGGER.warning("Updating Token credential failed during update call.");
@@ -164,7 +167,7 @@ if ( c ) {
         }
     }
   
-  
+  /*
   def credentials_store = Jenkins.instance.getExtensionList(
   'com.cloudbees.plugins.credentials.SystemCredentialsProvider'
   )[0].getStore()
@@ -197,7 +200,7 @@ if ( c ) {
 } else {
   println "could not find credential for ${c.id} in Jenkins credential store"
 }
-
+*/
 
 }
 
