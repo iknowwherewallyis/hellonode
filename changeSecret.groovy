@@ -151,7 +151,7 @@ if ( c ) {
   
     def credentials_domain = credentials_store.getDomains().get(0)
 
-  println("${credentials_domain}")
+  println("${credentials_domain}".name)
   
     //def List<DomainSpecification> specifications = null
     //final Domain domain = new Domain('docker-test', null, specifications);
