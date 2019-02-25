@@ -171,6 +171,7 @@ if ( c ) {
 
 */
 }
+}
 
 return this;
 
