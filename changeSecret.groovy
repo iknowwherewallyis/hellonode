@@ -160,7 +160,8 @@ if ( c ) {
     for (final Domain d : credentialsStore.getDomains()) {
         for (Credentials c : credentialsStore.getCredentials(d)) {
             if (!(c instanceof StringCredentials)) continue;
-
+            println(d)
+            println(c)
             final StringCredentials stringCredentials = (StringCredentials) c;
             if (stringCredentials.getId().equals(id)) {
                 final boolean wasUpdated = credentialsStore.updateCredentials(d, c, creds);
