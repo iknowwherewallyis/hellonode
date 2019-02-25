@@ -25,8 +25,6 @@ import hudson.security.ACL;
 import hudson.util.ListBoxModel;
 import hudson.util.Secret;
 import jenkins.model.Jenkins;
-import jenkins.plugins.hipchat.HipChatNotifier;
-import jenkins.plugins.hipchat.HipChatNotifier.DescriptorImpl;
 
 import org.acegisecurity.Authentication;
 import org.jenkinsci.plugins.plaincredentials.StringCredentials;
