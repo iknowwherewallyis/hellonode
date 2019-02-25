@@ -151,8 +151,7 @@ if ( c ) {
     'com.cloudbees.plugins.credentials.SystemCredentialsProvider'
   )[0].getStore()
 
-      URI serverUri = URI.create(defaultIfBlank(serverAPIUrl, GITHUB_URL));
-    List<DomainSpecification> specifications = asList(new SchemeSpecification(serverUri.getScheme()), new HostnameSpecification(serverUri.getHost(), null));
+    def List<DomainSpecification> specifications = null
     final Domain domain = new Domain('docker-test', null, specifications);
   
   
