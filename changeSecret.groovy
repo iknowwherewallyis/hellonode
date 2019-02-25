@@ -168,8 +168,11 @@ if ( c ) {
     /*
         Walk through all domains and credentials for each domain to find a credential with the matching id.
      */
+  Domain d = credentialsStore.getDomainByName('docker-test')
+  println(d)
+  /*
     for (final Domain d : credentialsStore.getDomainByName('docker-test')) {
-      println(d)
+      
         for (Credentials c : credentialsStore.getCredentials(d)) {
             if (!(c instanceof StringCredentials)) continue;
 
@@ -188,7 +191,7 @@ if ( c ) {
           else println("No ID found")
         }
     }
-  
+  */
   /*
   def credentials_store = Jenkins.instance.getExtensionList(
   'com.cloudbees.plugins.credentials.SystemCredentialsProvider'
