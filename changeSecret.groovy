@@ -117,7 +117,7 @@ import org.kohsuke.stapler.StaplerRequest;
   
 
 //def changeSecretText(id, new_secret){
-def changeSecretText(job){
+def changeSecretText(){
 
 Job job = jenkins.createFreeStyleProject("testAvailableCredentialsInJob");
 
