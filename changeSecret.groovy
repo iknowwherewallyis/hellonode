@@ -159,7 +159,7 @@ def changeSecretText(){
 //def secret = Secret.fromString(new_secret)
 //def c = creds.find {it.id == id}
 
-  println(creds)
+  println("${creds}")
 
   
 //println "${c.scope}"
