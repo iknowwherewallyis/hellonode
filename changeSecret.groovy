@@ -160,7 +160,7 @@ if ( c ) {
   }
   println(credentialsStore)
   
-  for (CredentialsStore credentialsStore : CredentialsProvider.lookupStores(Jenkins.getInstance())
+  for (CredentialsStore credentialsStore : println(CredentialsProvider.lookupStores(Jenkins.getInstance())))
        
   
     def secret = Secret.fromString(new_secret)
