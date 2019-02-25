@@ -122,8 +122,8 @@ def changeSecretText(){
 //Job job = jenkins.createFreeStyleProject("testAvailableCredentialsInJob");
 
     def hi = Hudson.instance
-    def list = hi.getJob('docker-test')  
-  println "${list}"
+    def job = hi.getJob('docker-test')  
+  //println "${list}"
   //for (l in list){
   //  println(l)
  // }
@@ -146,7 +146,7 @@ def changeSecretText(){
 // 
   
   
-/*
+
 //def creds = com.cloudbees.plugins.credentials.CredentialsProvider.lookupCredentials(
   //com.cloudbees.plugins.credentials.Credentials.class,
   def creds = CredentialsProvider.lookupCredentials(
@@ -190,8 +190,7 @@ if ( c ) {
   println "could not find credential for ${c.id} in Jenkins credential store"
 }
 }
-*/
-}
+
 return this;
 
 
