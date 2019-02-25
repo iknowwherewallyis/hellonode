@@ -40,12 +40,21 @@ import java.util.UUID;
 
 def changeSecretText(id, new_secret){
 
-def creds = com.cloudbees.plugins.credentials.CredentialsProvider.lookupCredentials(
-        com.cloudbees.plugins.credentials.Credentials.class,
-        Jenkins.instance,
-        ACL.SYSTEM, 
-        Collections.<DomainRequirement>emptyList()
+ def creds = CredentialsProvider.listCredentials(
+    StringCredentials.class, 
+    job, 
+    job instanceof Queue.Task 
+      ? Tasks.getAuthenticationOf((Queue.Task)job)) 
+      : ACL.SYSTEM,
+    URIRequirementBuilder.fromUri(scmUrl), 
+    null 
 );
+//def creds = com.cloudbees.plugins.credentials.CredentialsProvider.lookupCredentials(
+//        com.cloudbees.plugins.credentials.Credentials.class,
+//        Jenkins.instance,
+//        ACL.SYSTEM, 
+//        Collections.<DomainRequirement>emptyList()
+//);
 for (c in creds) {
     println(c.id + ": " + c.description)
 }  
