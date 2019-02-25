@@ -120,7 +120,7 @@ def changeSecretText(id, new_secret){
 
   def hi = Hudson.instance
   def job = hi.getJob('docker-test')  
-  println ("${job}".scope)
+  println ("${job}")
   //def creds = com.cloudbees.plugins.credentials.CredentialsProvider.lookupCredentials(
   //com.cloudbees.plugins.credentials.Credentials.class,
   def creds = com.cloudbees.plugins.credentials.CredentialsProvider.lookupCredentials(
