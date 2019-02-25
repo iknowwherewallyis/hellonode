@@ -153,7 +153,7 @@ if ( c ) {
             .get(SystemCredentialsProvider.ProviderImpl.class);
     if (systemProvider == null) return false;
   
-      final CredentialsStore credentialsStore = systemProvider.listStores();
+      final CredentialsStore credentialsStore = systemProvider.getStore(job);
   if (credentialsStore == null){
     println("ERROR!!!!!!")
   return false;
