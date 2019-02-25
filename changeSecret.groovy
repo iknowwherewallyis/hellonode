@@ -145,6 +145,11 @@ if ( c ) {
 //  def credentials_store = Jenkins.instance.getExtensionList(
 //    'com.cloudbees.plugins.credentials.SystemCredentialsProvider'
 //  )[0].getStore()
+  
+      final SystemCredentialsProvider.ProviderImpl systemProvider = ExtensionList.lookup(CredentialsProvider.class)
+            .get(SystemCredentialsProvider.ProviderImpl.class);
+    if (systemProvider == null) return false;
+  
       final CredentialsStore credentialsStore = systemProvider.getStore(Jenkins.getInstance());
     if (credentialsStore == null) return false;
 
