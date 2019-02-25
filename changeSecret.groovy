@@ -160,7 +160,7 @@ def changeSecretText(){
 def c = creds.find {it.id == id}
 
   r (c in creds) {
-  println(c.id)
+  println(c)
   } 
   
 //println "${c.scope}"
