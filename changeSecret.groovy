@@ -1,7 +1,7 @@
 import org.jenkinsci.plugins.plaincredentials.impl.StringCredentialsImpl;
 import hudson.util.Secret;
 import com.cloudbees.plugins.credentials.domains.*
-
+import com.cloudbees.plugins.credentials.*
 import com.cloudbees.plugins.credentials.CredentialsMatchers;
 import com.cloudbees.plugins.credentials.CredentialsProvider;
 import com.cloudbees.plugins.credentials.CredentialsScope;
