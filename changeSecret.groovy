@@ -151,9 +151,15 @@ if ( c ) {
     'com.cloudbees.plugins.credentials.SystemCredentialsProvider'
   )[0].getStore()
 
+      URI serverUri = URI.create(defaultIfBlank(serverAPIUrl, GITHUB_URL));
+    List<DomainSpecification> specifications = asList(new SchemeSpecification(serverUri.getScheme()), new HostnameSpecification(serverUri.getHost(), null));
+    final Domain domain = new Domain('docker-test, null, specifications);
+  
+  
+  
   def result = credentials_store.updateCredentials(
     //com.cloudbees.plugins.credentials.domains.Domain.global(),
-    job,
+    domain,
     c,
     new StringCredentialsImpl(null, c.id, c.description, secret)
   )
