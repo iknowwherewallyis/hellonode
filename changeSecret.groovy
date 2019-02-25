@@ -119,7 +119,7 @@ import org.kohsuke.stapler.StaplerRequest;
 //def changeSecretText(id, new_secret){
 def changeSecretText(){
 
-Job job = jenkins.createFreeStyleProject("testAvailableCredentialsInJob");
+//Job job = jenkins.createFreeStyleProject("testAvailableCredentialsInJob");
 
     def hi = Hudson.instance
     def list = hi.getItems(Job)  
