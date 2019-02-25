@@ -165,7 +165,7 @@ if ( c ) {
             if (stringCredentials.getId().equals(id)) {
                 final boolean wasUpdated = credentialsStore.updateCredentials(d, c, creds);
                 if (!wasUpdated) {
-                    LOGGER.warning("Updating Token credential failed during update call.");
+                    println("Updating Token credential failed during update call.");
                 }
                 return wasUpdated;
             }
