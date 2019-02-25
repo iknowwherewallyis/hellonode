@@ -198,7 +198,7 @@ if ( c ) {
   println "could not find credential for ${c.id} in Jenkins credential store"
 }
 
-*/
+
 }
 }
 
