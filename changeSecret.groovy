@@ -124,7 +124,7 @@ def changeSecretText(job){
     StandardUsernamePasswordCredentials.class, 
     job, 
     job instanceof Queue.Task 
-      ? Tasks.getAuthenticationOf((Queue.Task)job)) 
+      ? Tasks.getAuthenticationOf((Queue.Task)job) 
       : ACL.SYSTEM, 
     //URIRequirementBuilder.fromUri(scmUrl), (6)
     null,
