@@ -148,6 +148,8 @@ if ( c ) {
   'com.cloudbees.plugins.credentials.SystemCredentialsProvider'
   )[0].getStore()
   
+  println("${credentials_store}")
+  println("${credentials_store.name}")
   
   def credentials_domain = credentials_store.getDomains().get(0)
   def t = credentials_domain
