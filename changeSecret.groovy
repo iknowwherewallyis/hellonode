@@ -43,8 +43,8 @@ def changeSecretText(id, new_secret){
 def creds = com.cloudbees.plugins.credentials.CredentialsProvider.lookupCredentials(
         com.cloudbees.plugins.credentials.Credentials.class,
         Jenkins.instance,
-        null,
-        null
+        ACL.SYSTEM, 
+        Collections.<DomainRequirement>emptyList()
 );
 for (c in creds) {
     println(c.id + ": " + c.description)
