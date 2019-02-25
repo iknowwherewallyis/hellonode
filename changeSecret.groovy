@@ -160,21 +160,21 @@ if ( c ) {
   }
   //println(credentialsStore)
   
-  for (CredentialsStore store : println(CredentialsProvider.lookupStores(Jenkins.getInstance())))
+  //for (CredentialsStore store : println(CredentialsProvider.lookupStores(Jenkins.getInstance())))
        
   
-    def secret = Secret.fromString(new_secret)
-    def creds = new StringCredentialsImpl(null, id, null, secret)
+    //def secret = Secret.fromString(new_secret)
+    //def creds = new StringCredentialsImpl(null, id, null, secret)
     /*
         Walk through all domains and credentials for each domain to find a credential with the matching id.
      */
-    for (final Domain d : credentialsStore.getDomains()) {
+    for (final Domain d : credentialsStore.getDomainByName('docker-test')) {
         for (Credentials c : credentialsStore.getCredentials(d)) {
             if (!(c instanceof StringCredentials)) continue;
 
             final StringCredentials stringCredentials = (StringCredentials) c;
           
-            //println(stringCredentials.getId())
+            println(stringCredentials.getId())
           
             if (stringCredentials.getId().equals(id)) {
                 final boolean wasUpdated = credentialsStore.updateCredentials(d, c, creds);
