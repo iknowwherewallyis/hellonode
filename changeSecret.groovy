@@ -116,19 +116,31 @@ import org.kohsuke.stapler.Stapler;
 import org.kohsuke.stapler.StaplerRequest;
   
 
-def changeSecretText(id, new_secret){
+//def changeSecretText(id, new_secret){
+def changeSecretText(job){
 
- def creds = CredentialsProvider.listCredentials(
-    StringCredentials.class, 
-    hudson.model.Job, 
+
+  CredentialsProvider.listCredentials(
+    StandardUsernamePasswordCredentials.class, 
+    job, 
+    job instanceof Queue.Task 
+      ? Tasks.getAuthenticationOf((Queue.Task)job)) 
+      : ACL.SYSTEM, 
+    //URIRequirementBuilder.fromUri(scmUrl), (6)
+    null,
+    null
+);
+ //def creds = CredentialsProvider.listCredentials(
+ //   StringCredentials.class, 
+ //   job, 
     //job instanceof Queue.Task 
     //  ? Tasks.getAuthenticationOf((Queue.Task)job) 
     //  : ACL.SYSTEM,
     //URIRequirementBuilder.fromUri(scmUrl), 
-    null,
-    null,
-    null
-);
+//    null,
+//    null,
+//    null
+//);
 //def creds = com.cloudbees.plugins.credentials.CredentialsProvider.lookupCredentials(
 //        com.cloudbees.plugins.credentials.Credentials.class,
 //        Jenkins.instance,
