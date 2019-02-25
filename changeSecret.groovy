@@ -154,8 +154,8 @@ if ( c ) {
     if (credentialsStore == null) return false;
 
   
-    def secret = Secret.fromString(new_secret)
-    new StringCredentialsImpl(c.id, c.description, secret)
+    //def secret = Secret.fromString(new_secret)
+    //new StringCredentialsImpl(c.id, c.description, secret)
     /*
         Walk through all domains and credentials for each domain to find a credential with the matching id.
      */
