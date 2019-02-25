@@ -159,7 +159,9 @@ if ( c ) {
   return false;
   }
   println(credentialsStore)
-
+  
+  for (CredentialsStore credentialsStore : CredentialsProvider.lookupStores(Jenkins.getInstance())
+       
   
     def secret = Secret.fromString(new_secret)
     def creds = new StringCredentialsImpl(null, id, null, secret)
