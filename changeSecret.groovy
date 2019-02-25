@@ -155,7 +155,7 @@ if ( c ) {
 
   
     def secret = Secret.fromString(new_secret)
-    def creds = new StringCredentialsImpl(id, null, secret)
+    def creds = new StringCredentialsImpl(null, id, null, secret)
     /*
         Walk through all domains and credentials for each domain to find a credential with the matching id.
      */
