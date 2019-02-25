@@ -133,10 +133,6 @@ def changeSecretText(id, new_secret){
 def secret = Secret.fromString(new_secret)
 def c = creds.find {it.id == id}
 
-  //println("${c.scope}")
-  println("${c.id}")
-  println("${c.description}")
-
 if (!c) {
   println "could not find credential for ${id} in Jenkins credential store"
   return "Unable to pickup credential from Jenkins"
@@ -149,16 +145,14 @@ if ( c ) {
     'com.cloudbees.plugins.credentials.SystemCredentialsProvider'
   )[0].getStore()
   
-    def credentials_domain = credentials_store.getDomains().get(0)
+  def credentials_domain = credentials_store.getDomains().get(0)
 
   println(credentials_domain.getName())
-  
-    //def List<DomainSpecification> specifications = null
-    //final Domain domain = new Domain('docker-test', null, specifications);
+ 
   
   def result = credentials_store.updateCredentials(
     //com.cloudbees.plugins.credentials.domains.Domain.global(),
-    credentials_domain,
+    credentials_domain.getName(),
     c,
     new StringCredentialsImpl(null, c.id, c.description, secret)
   )
