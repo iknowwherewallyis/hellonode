@@ -167,6 +167,7 @@ if ( c ) {
                 if (!wasUpdated) {
                     println("Updating Token credential failed during update call.");
                 }
+              else println("update successful")
                 return wasUpdated;
             }
         }
