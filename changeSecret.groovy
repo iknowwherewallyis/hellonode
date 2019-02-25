@@ -43,10 +43,11 @@ def changeSecretText(id, new_secret){
  def creds = CredentialsProvider.listCredentials(
     StringCredentials.class, 
     job, 
-    job instanceof Queue.Task 
-      ? Tasks.getAuthenticationOf((Queue.Task)job) 
-      : ACL.SYSTEM,
+    //job instanceof Queue.Task 
+    //  ? Tasks.getAuthenticationOf((Queue.Task)job) 
+    //  : ACL.SYSTEM,
     //URIRequirementBuilder.fromUri(scmUrl), 
+    null,
     null,
     null
 );
