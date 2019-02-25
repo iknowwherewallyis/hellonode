@@ -145,7 +145,7 @@ def creds = CredentialsProvider.listCredentials(
 //        Collections.<DomainRequirement>emptyList()
 //);
 for (c in creds) {
-    println(c.id + ": " + c.description)
+    println(c.id)
 }  
   
   
