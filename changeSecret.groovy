@@ -119,11 +119,14 @@ import org.kohsuke.stapler.StaplerRequest;
 def changeSecretText(id, new_secret){
 
   
-  /*
+  
   def hi = Hudson.instance
   def job = hi.getJob('docker-test')  
+  
+  /*
   //def creds = com.cloudbees.plugins.credentials.CredentialsProvider.lookupCredentials(
   //com.cloudbees.plugins.credentials.Credentials.class,
+  
   def creds = com.cloudbees.plugins.credentials.CredentialsProvider.lookupCredentials(
   StringCredentials.class,
   job,
@@ -150,7 +153,7 @@ if ( c ) {
             .get(SystemCredentialsProvider.ProviderImpl.class);
     if (systemProvider == null) return false;
   
-      final CredentialsStore credentialsStore = systemProvider.getStore(Jenkins.getInstance());
+      final CredentialsStore credentialsStore = systemProvider.getStore(job);
     if (credentialsStore == null) return false;
 
   
