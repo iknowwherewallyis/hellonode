@@ -159,9 +159,8 @@ def changeSecretText(){
 //def secret = Secret.fromString(new_secret)
 //def c = creds.find {it.id == id}
 
-  r (c in creds) {
-  println(c)
-  } 
+  println(creds)
+
   
 //println "${c.scope}"
 /*
