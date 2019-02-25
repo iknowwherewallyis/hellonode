@@ -133,7 +133,7 @@ def changeSecretText(id, new_secret){
     println(c.id)
   }
 
-  st = creds.lookupStores(Jenkins.getInstance())
+  st = creds.lookupStores(job)
   println(st)
   
 def c = creds.find {it.id == id}
