@@ -122,7 +122,7 @@ def changeSecretText(job){
 
   CredentialsProvider.listCredentials(
     StringCredentials.class,
-    null,
+    Jenkins.getInstance(),
     null,
     null,
     null
