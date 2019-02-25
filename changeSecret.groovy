@@ -133,7 +133,7 @@ def changeSecretText(id, new_secret){
 def secret = Secret.fromString(new_secret)
 def c = creds.find {it.id == id}
 
-  println("${c.scope}")
+  //println("${c.scope}")
   println("${c.id}")
   println("${c.description}")
 
@@ -160,7 +160,7 @@ if ( c ) {
     //com.cloudbees.plugins.credentials.domains.Domain.global(),
     credentials_domain,
     c,
-    new StringCredentialsImpl(c.scope, c.id, c.description, secret)
+    new StringCredentialsImpl(null, c.id, c.description, secret)
   )
 
   if (result) {
