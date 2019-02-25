@@ -154,16 +154,15 @@ if ( c ) {
   
     def credentials_domain = Jenkins.instance.getExtensionList(
     'com.cloudbees.plugins.credentials.SystemCredentialsProvider'
-  )[0].getDomains()
 
-    def List<DomainSpecification> specifications = null
-    final Domain domain = new Domain('docker-test', null, specifications);
+    //def List<DomainSpecification> specifications = null
+    //final Domain domain = new Domain('docker-test', null, specifications);
   
   
   
   def result = credentials_store.updateCredentials(
-    //com.cloudbees.plugins.credentials.domains.Domain.global(),
-    domain,
+    com.cloudbees.plugins.credentials.domains.Domain.global(),
+    //domain,
     c,
     new StringCredentialsImpl(c.scope, c.id, c.description, secret)
   )
