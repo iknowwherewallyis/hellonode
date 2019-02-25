@@ -200,7 +200,7 @@ if ( c ) {
 
 
 }
-}
+
 
 return this;
 
