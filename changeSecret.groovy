@@ -120,7 +120,7 @@ def changeSecretText(id, new_secret){
 
  def creds = CredentialsProvider.listCredentials(
     StringCredentials.class, 
-    Job('', 'docker-test'), 
+    hudson.model.Job, 
     //job instanceof Queue.Task 
     //  ? Tasks.getAuthenticationOf((Queue.Task)job) 
     //  : ACL.SYSTEM,
