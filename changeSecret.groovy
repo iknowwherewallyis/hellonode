@@ -154,7 +154,11 @@ if ( c ) {
     if (systemProvider == null) return false;
   
       final CredentialsStore credentialsStore = systemProvider.getStore(job);
-    if (credentialsStore == null) return false;
+  if (credentialsStore == null){
+    println("ERROR!!!!!!")
+  return false;
+  }
+  println(credentialsStore)
 
   
     def secret = Secret.fromString(new_secret)
