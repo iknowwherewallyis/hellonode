@@ -151,16 +151,20 @@ def changeSecretText(){
   //com.cloudbees.plugins.credentials.Credentials.class,
   def creds = CredentialsProvider.lookupCredentials(
   StringCredentials.class,
-  Jenkins.instance,
+  job,
   null,
   null
   );
   
-def secret = Secret.fromString(new_secret)
+//def secret = Secret.fromString(new_secret)
 def c = creds.find {it.id == id}
 
+  r (c in creds) {
+  println(c.id)
+  } 
+  
 //println "${c.scope}"
-
+/*
 if (!c) {
   println "could not find credential for ${id} in Jenkins credential store"
   return "Unable to pickup credential from Jenkins"
@@ -189,6 +193,7 @@ if ( c ) {
 } else {
   println "could not find credential for ${c.id} in Jenkins credential store"
 }
+*/
 }
 
 return this;
