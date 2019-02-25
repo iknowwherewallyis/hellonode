@@ -137,6 +137,7 @@ def c = creds.find {it.id == id}
   println("${c.scope}")
   println("${c.id}")
   println("${c.description}")
+  println("${c.domain}")
 
 
 if (!c) {
