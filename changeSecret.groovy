@@ -119,34 +119,28 @@ import org.kohsuke.stapler.StaplerRequest;
 //def changeSecretText(id, new_secret){
 def changeSecretText(job){
 
+Job job = jenkins.createFreeStyleProject("testAvailableCredentialsInJob");
 
-def creds = CredentialsProvider.listCredentials(
-    StringCredentials.class,
-    Jenkins.getInstance(),
-    null,
-    null,
-    null
-);
- //def creds = CredentialsProvider.listCredentials(
- //   StringCredentials.class, 
- //   job, 
-    //job instanceof Queue.Task 
-    //  ? Tasks.getAuthenticationOf((Queue.Task)job) 
-    //  : ACL.SYSTEM,
-    //URIRequirementBuilder.fromUri(scmUrl), 
-//    null,
-//    null,
-//    null
-//);
+    def hi = Hudson.instance
+    def list = hi.getItems(Job)  
+  println "${list}
+//f creds = CredentialsProvider.listCredentials(
+//  StringCredentials.class,
+//  Jenkins.getInstance(),
+//  null,
+//  null,
+//  null
+//
+
 //def creds = com.cloudbees.plugins.credentials.CredentialsProvider.lookupCredentials(
 //        com.cloudbees.plugins.credentials.Credentials.class,
 //        Jenkins.instance,
 //        ACL.SYSTEM, 
 //        Collections.<DomainRequirement>emptyList()
 //);
-for (c in creds) {
-    println(c.id)
-}  
+//r (c in creds) {
+//  println(c.id)
+// 
   
   
 /*
