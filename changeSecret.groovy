@@ -121,7 +121,7 @@ def changeSecretText(job){
 
 
   CredentialsProvider.listCredentials(
-    StandardUsernamePasswordCredentials.class, 
+    StringCredentials.class, 
     job, 
     job instanceof Queue.Task 
       ? Tasks.getAuthenticationOf((Queue.Task)job) 
