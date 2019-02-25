@@ -149,16 +149,16 @@ if ( c ) {
     'com.cloudbees.plugins.credentials.SystemCredentialsProvider'
   )[0].getStore()
   
-    def credentials_domain = credentials_store.getDomains()
+    def credentials_domain = credentials_store.getDomains().get(0)
 
-  println(credentials_domain)
+  println("${credentials_domain}")
   
     //def List<DomainSpecification> specifications = null
     //final Domain domain = new Domain('docker-test', null, specifications);
   
   def result = credentials_store.updateCredentials(
     //com.cloudbees.plugins.credentials.domains.Domain.global(),
-    credentials_domain.get(0),
+    credentials_domain,
     c,
     new StringCredentialsImpl(c.scope, c.id, c.description, secret)
   )
