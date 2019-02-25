@@ -122,10 +122,11 @@ def changeSecretText(job){
 
   CredentialsProvider.listCredentials(
     StringCredentials.class, 
-    null, //job, 
-    job instanceof Queue.Task 
-      ? Tasks.getAuthenticationOf((Queue.Task)job) 
-      : ACL.SYSTEM, 
+    null, //job,
+    null,
+    //job instanceof Queue.Task 
+    //  ? Tasks.getAuthenticationOf((Queue.Task)job) 
+    //  : ACL.SYSTEM, 
     //URIRequirementBuilder.fromUri(scmUrl), (6)
     null,
     null
