@@ -146,13 +146,13 @@ if ( c ) {
   
   def credentials_store = Jenkins.instance.getExtensionList(
   'com.cloudbees.plugins.credentials.SystemCredentialsProvider'
-  )[].getStore()
+  )[1].getStore()
   
   
   def credentials_domain = credentials_store.getDomains()
   def t = credentials_domain
 
-  println("${t.name}")
+  println("${t.id}")
   println(t.getName())
  
   
