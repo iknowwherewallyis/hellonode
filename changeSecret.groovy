@@ -145,13 +145,14 @@ if ( c ) {
   )[0].getStore()
   
   def credentials_domain = credentials_store.getDomains()
+  def t = credentials_domain.get(0)
 
-  println(credentials_domain)
+  println(t.getName())
  
   
   def result = credentials_store.updateCredentials(
     //com.cloudbees.plugins.credentials.domains.Domain.global(),
-    credentials_domain.getName(),
+    credentials_domain,
     c,
     new StringCredentialsImpl(null, c.id, c.description, secret)
   )
