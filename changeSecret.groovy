@@ -124,6 +124,9 @@ def changeSecretText(){
     def hi = Hudson.instance
     def list = hi.getItems(Job)  
   println "${list}"
+  for (l in list){
+    println(l.id)
+  }
 //f creds = CredentialsProvider.listCredentials(
 //  StringCredentials.class,
 //  Jenkins.getInstance(),
