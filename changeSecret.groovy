@@ -117,12 +117,11 @@ import org.kohsuke.stapler.StaplerRequest;
   
 
 def changeSecretText(id, new_secret){
-//def changeSecretText(){
 
-    def hi = Hudson.instance
-    def job = hi.getJob('docker-test')  
+  def hi = Hudson.instance
+  def job = hi.getJob('docker-test')  
 
-//def creds = com.cloudbees.plugins.credentials.CredentialsProvider.lookupCredentials(
+  //def creds = com.cloudbees.plugins.credentials.CredentialsProvider.lookupCredentials(
   //com.cloudbees.plugins.credentials.Credentials.class,
   def creds = com.cloudbees.plugins.credentials.CredentialsProvider.lookupCredentials(
   StringCredentials.class,
@@ -137,8 +136,6 @@ def c = creds.find {it.id == id}
   println("${c.scope}")
   println("${c.id}")
   println("${c.description}")
-  //println("${c.domain}")
-
 
 if (!c) {
   println "could not find credential for ${id} in Jenkins credential store"
@@ -152,14 +149,10 @@ if ( c ) {
     'com.cloudbees.plugins.credentials.SystemCredentialsProvider'
   )[0].getStore()
   
-    def credentials_domain = Jenkins.instance.getExtensionList(
-    'com.cloudbees.plugins.credentials.SystemCredentialsProvider'
-      )[0].getDomains()
+    def credentials_domain = credentials_store.getDomains()
 
     //def List<DomainSpecification> specifications = null
     //final Domain domain = new Domain('docker-test', null, specifications);
-  
-  
   
   def result = credentials_store.updateCredentials(
     com.cloudbees.plugins.credentials.domains.Domain.global(),
