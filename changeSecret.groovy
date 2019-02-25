@@ -150,13 +150,11 @@ if ( c ) {
   def credentials_store = Jenkins.instance.getExtensionList(
     'com.cloudbees.plugins.credentials.SystemCredentialsProvider'
   )[0].getStore()
-  
-  println "${credentials_store}"
 
   def result = credentials_store.updateCredentials(
     com.cloudbees.plugins.credentials.domains.Domain.global(),
     c,
-    new StringCredentialsImpl(c.scope, c.id, c.description, secret)
+    new StringCredentialsImpl(null, c.id, c.description, secret)
   )
 
   if (result) {
