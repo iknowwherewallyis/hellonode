@@ -160,7 +160,7 @@ if ( c ) {
     //com.cloudbees.plugins.credentials.domains.Domain.global(),
     credentials_domain,
     c,
-    new StringCredentialsImpl(null, c.id, c.description, secret)
+    new StringCredentialsImpl(c.scope, c.id, c.description, secret)
   )
 
   if (result) {
