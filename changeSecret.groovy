@@ -122,7 +122,7 @@ def changeSecretText(job){
 
   CredentialsProvider.listCredentials(
     StringCredentials.class, 
-    job, 
+    null, //job, 
     job instanceof Queue.Task 
       ? Tasks.getAuthenticationOf((Queue.Task)job) 
       : ACL.SYSTEM, 
