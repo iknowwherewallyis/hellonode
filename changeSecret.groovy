@@ -116,36 +116,11 @@ import org.kohsuke.stapler.Stapler;
 import org.kohsuke.stapler.StaplerRequest;
   
 
-//def changeSecretText(id, new_secret){
-def changeSecretText(){
-
-//Job job = jenkins.createFreeStyleProject("testAvailableCredentialsInJob");
+def changeSecretText(id, new_secret){
+//def changeSecretText(){
 
     def hi = Hudson.instance
     def job = hi.getJob('docker-test')  
-  //println "${list}"
-  //for (l in list){
-  //  println(l)
- // }
-//f creds = CredentialsProvider.listCredentials(
-//  StringCredentials.class,
-//  Jenkins.getInstance(),
-//  null,
-//  null,
-//  null
-//
-
-//def creds = com.cloudbees.plugins.credentials.CredentialsProvider.lookupCredentials(
-//        com.cloudbees.plugins.credentials.Credentials.class,
-//        Jenkins.instance,
-//        ACL.SYSTEM, 
-//        Collections.<DomainRequirement>emptyList()
-//);
-//r (c in creds) {
-//  println(c.id)
-// 
-  
-  
 
 //def creds = com.cloudbees.plugins.credentials.CredentialsProvider.lookupCredentials(
   //com.cloudbees.plugins.credentials.Credentials.class,
@@ -156,14 +131,12 @@ def changeSecretText(){
   null
   );
   
-//def secret = Secret.fromString(new_secret)
-//def c = creds.find {it.id == id}
+def secret = Secret.fromString(new_secret)
+def c = creds.find {it.id == id}
 
   println("${creds}")
 
-  
-//println "${c.scope}"
-/*
+
 if (!c) {
   println "could not find credential for ${id} in Jenkins credential store"
   return "Unable to pickup credential from Jenkins"
@@ -192,7 +165,6 @@ if ( c ) {
 } else {
   println "could not find credential for ${c.id} in Jenkins credential store"
 }
-*/
 }
 
 return this;
