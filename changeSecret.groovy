@@ -5,8 +5,9 @@ import com.cloudbees.plugins.credentials.domains.*
 
 def changeSecretText(id, new_secret){
 
-def creds = com.cloudbees.plugins.credentials.CredentialsProvider.lookupCredentials(
+//def creds = com.cloudbees.plugins.credentials.CredentialsProvider.lookupCredentials(
   //com.cloudbees.plugins.credentials.Credentials.class,
+  def creds = CredentialsProvider.lookupCredentials(
   StringCredentials.class,
   Jenkins.instance,
   null,
