@@ -115,7 +115,6 @@ import org.kohsuke.accmod.restrictions.DoNotUse;
 import org.kohsuke.stapler.Stapler;
 import org.kohsuke.stapler.StaplerRequest;
 import com.cloudbees.jenkins.plugins.sshcredentials.impl.BasicSSHUserPrivateKey
-import com.cloudbees.jenkins.plugins.awscredentials.AWSCredentialsImpl
 import org.jenkinsci.plugins.plaincredentials.StringCredentials
 import com.cloudbees.plugins.credentials.*
 import com.cloudbees.plugins.credentials.impl.*
@@ -139,8 +138,6 @@ credentialsStore?.getCredentials(domain).each{
     showRow("user/password", it.id, it.username, it.password?.getPlainText(),it.description)
   else if(it instanceof BasicSSHUserPrivateKey)
     showRow("ssh priv key", it.id, it.passphrase?.getPlainText(), it.privateKeySource?.getPrivateKey(), it.description )
-  else if(it instanceof AWSCredentialsImpl)
-    showRow("aws", it.id, it.accessKey, it.secretKey?.getPlainText(),it.description )
   else if(it instanceof StringCredentials)
     showRow("secret text", it.id, it.secret?.getPlainText(), it.description, '' )
   else
