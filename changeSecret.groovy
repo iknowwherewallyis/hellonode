@@ -120,7 +120,7 @@ import com.cloudbees.plugins.credentials.*
 import com.cloudbees.plugins.credentials.impl.*
 import com.cloudbees.plugins.credentials.domains.*
 
-@NonCPS
+
 def changeSecretText(id, new_secret){
   
   def hi = Hudson.instance
