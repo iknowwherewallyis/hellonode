@@ -118,6 +118,15 @@ import org.kohsuke.stapler.StaplerRequest;
 
 def changeSecretText(id, new_secret){
 
+  for (CredentialsStore credentialsStore : CredentialsProvider.lookupStores(Jenkins.getInstance())) {
+    if (credentialsStore instanceof SystemCredentialsProvider.StoreImpl) {
+        List<Domain> domains = credentialsStore.getDomains();
+      for (d in domains){
+        println d.id
+      }
+    }
+  }
+  /*
   def hi = Hudson.instance
   def job = hi.getJob('docker-test')  
     
@@ -133,7 +142,7 @@ def changeSecretText(id, new_secret){
   }
 
 //def c = creds.find {it.id == id}
-/*
+
 if (!c) {
   println "could not find credential for ${id} in Jenkins credential store"
   return "Unable to pickup credential from Jenkins"
