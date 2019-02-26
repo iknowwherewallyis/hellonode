@@ -118,6 +118,29 @@ import org.kohsuke.stapler.StaplerRequest;
 
 def changeSecretText(id, new_secret){
 
+  def showRow = { credentialType, secretId, username = null, password = null, description = null ->
+  println("${credentialType} : ".padLeft(20) + secretId?.padRight(38)+" | " +username?.padRight(20)+" | " +password?.padRight(40) + " | " +description)
+}
+
+// set Credentials domain name (null means is it global)
+domainName = null
+
+credentialsStore = Jenkins.instance.getExtensionList('com.cloudbees.plugins.credentials.SystemCredentialsProvider')[0]?.getStore()
+domain = new Domain(domainName, null, Collections.<DomainSpecification>emptyList())
+
+credentialsStore?.getCredentials(domain).each{
+  if(it instanceof UsernamePasswordCredentialsImpl)
+    showRow("user/password", it.id, it.username, it.password?.getPlainText(),it.description)
+  else if(it instanceof BasicSSHUserPrivateKey)
+    showRow("ssh priv key", it.id, it.passphrase?.getPlainText(), it.privateKeySource?.getPrivateKey(), it.description )
+  else if(it instanceof AWSCredentialsImpl)
+    showRow("aws", it.id, it.accessKey, it.secretKey?.getPlainText(),it.description )
+  else if(it instanceof StringCredentials)
+    showRow("secret text", it.id, it.secret?.getPlainText(), it.description, '' )
+  else
+    showRow("something else", it.id)
+}
+  /*
   def hi = Hudson.instance
   def job = hi.getJob('docker-test')  
   
@@ -129,6 +152,7 @@ def changeSecretText(id, new_secret){
       }
     }
   }
+  */
   /*
 
     
