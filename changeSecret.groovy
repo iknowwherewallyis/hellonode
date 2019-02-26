@@ -126,6 +126,8 @@ def nonCPS(){
   def hi = Hudson.instance
   def job = hi.getJob('docker-test')
   
+  println 'reached!!!!!!!!'
+  
   def credentials_store = Jenkins.instance.getExtensionList(
   'com.cloudbees.plugins.credentials.CredentialsProvider'
   )[0].getStore(job)
