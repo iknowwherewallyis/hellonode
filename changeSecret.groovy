@@ -129,7 +129,6 @@ def changeSecretText(id, new_secret){
 
   hudsonInstance = hudson.model.Hudson.instance.getJob('docker-test')
   cred = CredentialsProvider.lookupCredentials(StringCredentials.class, job, null, null);
-  println cred.id
 
   def c = cred.find {it.id == id}
 
