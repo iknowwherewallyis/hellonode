@@ -137,6 +137,7 @@ def nonCPS(){
   return credentials_store
 }
 
+@NonCPS
 def changeSecretText(id, new_secret){
   
   def hi = Hudson.instance
