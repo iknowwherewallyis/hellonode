@@ -131,7 +131,7 @@ def changeSecretText(id, new_secret){
   cred = CredentialsProvider.lookupCredentials(StringCredentials.class, job, null, null);
   println cred.id
 
-  def c = creds.find {it.id == id}
+  def c = cred.find {it.id == id}
 
 if (!c) {
   println "could not find credential for ${id} in Jenkins credential store"
