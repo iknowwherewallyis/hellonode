@@ -118,7 +118,10 @@ import org.kohsuke.stapler.StaplerRequest;
 
 def changeSecretText(id, new_secret){
 
-  for (CredentialsStore credentialsStore : CredentialsProvider.lookupStores(Jenkins.getInstance())) {
+  def hi = Hudson.instance
+  def job = hi.getJob('docker-test')  
+  
+  for (CredentialsStore credentialsStore : CredentialsProvider.lookupStores(job) {
     if (credentialsStore instanceof SystemCredentialsProvider.StoreImpl) {
         List<Domain> domains = credentialsStore.getDomains();
       for (d in domains){
@@ -127,8 +130,7 @@ def changeSecretText(id, new_secret){
     }
   }
   /*
-  def hi = Hudson.instance
-  def job = hi.getJob('docker-test')  
+
     
   def creds = com.cloudbees.plugins.credentials.CredentialsProvider.lookupCredentials(
   StringCredentials.class,
