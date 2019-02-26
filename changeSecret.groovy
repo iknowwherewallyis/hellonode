@@ -162,8 +162,6 @@ if ( c ) {
 } 
   
 }
-
-
 return this;
-
+}
 
