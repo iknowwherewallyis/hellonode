@@ -123,12 +123,13 @@ def changeSecretText(id, new_secret){
     
   def creds = com.cloudbees.plugins.credentials.CredentialsProvider.lookupCredentials(
   StringCredentials.class,
-  job,
+  //job,
+  jenkins.model.Jenkins.instance,
   null,
   null
   );
   for (c in creds){
-    println(c.scope)
+    println(c.id)
   }
 
 def c = creds.find {it.id == id}
