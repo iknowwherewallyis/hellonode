@@ -118,8 +118,6 @@ import org.kohsuke.stapler.StaplerRequest;
 
 def changeSecretText(id, new_secret){
 
-  
-  
   def hi = Hudson.instance
   def job = hi.getJob('docker-test')  
     
@@ -130,87 +128,29 @@ def changeSecretText(id, new_secret){
   null
   );
   for (c in creds){
-    println(c.id)
+    println(c.scope)
   }
 
-  st = creds.lookupStores(job)
-  println(st)
-  
 def c = creds.find {it.id == id}
 
 if (!c) {
   println "could not find credential for ${id} in Jenkins credential store"
   return "Unable to pickup credential from Jenkins"
 }
-/*
+
 if ( c ) {
   println "found credential ${c.id}"
-*/
-//  def credentials_store = Jenkins.instance.getExtensionList(
-//    'com.cloudbees.plugins.credentials.SystemCredentialsProvider'
-//  )[0].getStore()
-  
-      final SystemCredentialsProvider.ProviderImpl systemProvider = ExtensionList.lookup(CredentialsProvider.class)
-            .get(SystemCredentialsProvider.ProviderImpl.class);
-    if (systemProvider == null) return false;
-  
-      final CredentialsStore credentialsStore = systemProvider.getStore(job);
-  if (credentialsStore == null){
-    println("ERROR!!!!!!")
-  return false;
-  }
-  //println(credentialsStore)
-  
-  //for (CredentialsStore store : println(CredentialsProvider.lookupStores(Jenkins.getInstance())))
-       
-  
-    //def secret = Secret.fromString(new_secret)
-    //def creds = new StringCredentialsImpl(null, id, null, secret)
-    /*
-        Walk through all domains and credentials for each domain to find a credential with the matching id.
-     */
-  Domain d = credentialsStore.getDomainByName('docker-test')
-  println(d)
-  /*
-    for (final Domain d : credentialsStore.getDomainByName('docker-test')) {
-      
-        for (Credentials c : credentialsStore.getCredentials(d)) {
-            if (!(c instanceof StringCredentials)) continue;
 
-            final StringCredentials stringCredentials = (StringCredentials) c;
-          
-            println(stringCredentials.getId())
-          
-            if (stringCredentials.getId().equals(id)) {
-                final boolean wasUpdated = credentialsStore.updateCredentials(d, c, creds);
-                if (!wasUpdated) {
-                    println("Updating Token credential failed during update call.");
-                }
-              else println("update successful")
-                return wasUpdated;
-            }
-          else println("No ID found")
-        }
-    }
-  */
-  /*
   def credentials_store = Jenkins.instance.getExtensionList(
-  'com.cloudbees.plugins.credentials.SystemCredentialsProvider'
+  'com.cloudbees.plugins.credentials.CredentialsProvider'
   )[0].getStore()
-  
-    def credentials_domain = Jenkins.instance.getExtensionList(
-  'com.cloudbees.plugins.credentials.SystemCredentialsProvider'
-  )[0].getStore().getDomains()
-  
-  
-  def cut = credentials_store
-  println("${credentials_store}")
-  println(cut)
-  
-  //def credentials_domain = credentials_store.getDomains()
 
+  //def secret = Secret.fromString(new_secret)
   
-  
+  // def credentials_domain = Jenkins.instance.getExtensionList(
+  //'com.cloudbees.plugins.credentials.SystemCredentialsProvider'
+  //)[0].getStore().getDomains()
+    
   def result = credentials_store.updateCredentials(
     //com.cloudbees.plugins.credentials.domains.Domain.global(),
     credentials_domain,
@@ -226,10 +166,8 @@ if ( c ) {
 } else {
   println "could not find credential for ${c.id} in Jenkins credential store"
 }
-*/
 
 }
-
 
 return this;
 
