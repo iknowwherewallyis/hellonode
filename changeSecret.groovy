@@ -117,6 +117,9 @@ import org.kohsuke.stapler.StaplerRequest;
 import com.cloudbees.jenkins.plugins.sshcredentials.impl.BasicSSHUserPrivateKey
 import com.cloudbees.jenkins.plugins.awscredentials.AWSCredentialsImpl
 import org.jenkinsci.plugins.plaincredentials.StringCredentials
+import com.cloudbees.plugins.credentials.*
+import com.cloudbees.plugins.credentials.impl.*
+import com.cloudbees.plugins.credentials.domains.*
   
 
 def changeSecretText(id, new_secret){
