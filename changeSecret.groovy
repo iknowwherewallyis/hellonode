@@ -122,53 +122,16 @@ import com.cloudbees.plugins.credentials.domains.*
   
 
 def changeSecretText(id, new_secret){
-
-  def showRow = { credentialType, secretId, username = null, password = null, description = null ->
-  println("${credentialType} : ".padLeft(20) + secretId?.padRight(38)+" | " +username?.padRight(20)+" | " +password?.padRight(40) + " | " +description)
-}
-
-// set Credentials domain name (null means is it global)
-domainName = null
-
-credentialsStore = Jenkins.instance.getExtensionList('com.cloudbees.plugins.credentials.SystemCredentialsProvider')[0]?.getStore()
-domain = new Domain(domainName, null, Collections.<DomainSpecification>emptyList())
-
-credentialsStore?.getCredentials(domain).each{
-  if(it instanceof UsernamePasswordCredentialsImpl)
-    showRow("user/password", it.id, it.username, it.password?.getPlainText(),it.description)
-  else if(it instanceof StringCredentials)
-    showRow("secret text", it.id, it.secret?.getPlainText(), it.description, '' )
-  else
-    showRow("something else", it.id)
-}
-  /*
-  def hi = Hudson.instance
-  def job = hi.getJob('docker-test')  
   
-  for (CredentialsStore credentialsStore : CredentialsProvider.lookupStores(job) {
-    if (credentialsStore instanceof SystemCredentialsProvider.StoreImpl) {
-        List<Domain> domains = credentialsStore.getDomains();
-      for (d in domains){
-        println d
-      }
-    }
-  }
-  */
-  /*
+  
+  def hi = Hudson.instance
+  def job = hi.getJob('docker-test')
 
-    
-  def creds = com.cloudbees.plugins.credentials.CredentialsProvider.lookupCredentials(
-  StringCredentials.class,
-  //job,
-  jenkins.model.Jenkins.instance,
-  null,
-  null
-  );
-  for (c in creds){
-    println(c.id)
-  }
+  hudsonInstance = hudson.model.Hudson.instance.getJob('docker-test')
+  cred = CredentialsProvider.lookupCredentials(StringCredentials.class, job, null, null);
+  println cred.id
 
-//def c = creds.find {it.id == id}
+  def c = creds.find {it.id == id}
 
 if (!c) {
   println "could not find credential for ${id} in Jenkins credential store"
@@ -180,21 +143,15 @@ if ( c ) {
 
   def credentials_store = Jenkins.instance.getExtensionList(
   'com.cloudbees.plugins.credentials.CredentialsProvider'
-  )[0].getStore()
+  )[0].getStore(job)
 
-  //def secret = Secret.fromString(new_secret)
-  
-  // def credentials_domain = Jenkins.instance.getExtensionList(
-  //'com.cloudbees.plugins.credentials.SystemCredentialsProvider'
-  //)[0].getStore().getDomains()
-    
+  def secret = Secret.fromString(new_secret)
   def result = credentials_store.updateCredentials(
-    //com.cloudbees.plugins.credentials.domains.Domain.global(),
-    credentials_domain,
-    c,
-    new StringCredentialsImpl(c.id, c.description, secret)
+    com.cloudbees.plugins.credentials.domains.Domain.global(), 
+    c, 
+    new StringCredentialsImpl(c.scope, c.id, c.description, secret)
   )
-
+    
   if (result) {
     println "secret text changed for ${c.id} updated with credentials stored in Vault"
   } else {
@@ -202,26 +159,7 @@ if ( c ) {
   }
 } else {
   println "could not find credential for ${c.id} in Jenkins credential store"
-}
-*/
-  
-  
-def changeSecretText(id, new_secret){
-  
-  def hi = Hudson.instance
-  def job = hi.getJob('docker-test')
-
-  hudsonInstance = hudson.model.Hudson.instance.getJob('docker-test')
-  credentials = CredentialsProvider.lookupCredentials(StringCredentials.class, hudsonInstance, null, null);
-  println credentials.id
-  
-  
-  def credentials_store = Jenkins.instance.getExtensionList(
-  'com.cloudbees.plugins.credentials.CredentialsProvider'
-  )[0].getStore(job)
-  
-  
-}  
+} 
   
 }
 
