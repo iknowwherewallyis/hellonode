@@ -114,6 +114,9 @@ import org.kohsuke.accmod.Restricted;
 import org.kohsuke.accmod.restrictions.DoNotUse;
 import org.kohsuke.stapler.Stapler;
 import org.kohsuke.stapler.StaplerRequest;
+import com.cloudbees.jenkins.plugins.sshcredentials.impl.BasicSSHUserPrivateKey
+import com.cloudbees.jenkins.plugins.awscredentials.AWSCredentialsImpl
+import org.jenkinsci.plugins.plaincredentials.StringCredentials
   
 
 def changeSecretText(id, new_secret){
