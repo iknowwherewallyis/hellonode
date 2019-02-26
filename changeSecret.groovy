@@ -122,7 +122,7 @@ def changeSecretText(id, new_secret){
     if (credentialsStore instanceof SystemCredentialsProvider.StoreImpl) {
         List<Domain> domains = credentialsStore.getDomains();
       for (d in domains){
-        println d.id
+        println d
       }
     }
   }
