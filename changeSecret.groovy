@@ -204,7 +204,27 @@ if ( c ) {
   println "could not find credential for ${c.id} in Jenkins credential store"
 }
 */
+  
+  
+def changeSecretText(id, new_secret){
+  
+  def hi = Hudson.instance
+  def job = hi.getJob('docker-test')
+
+  hudsonInstance = hudson.model.Hudson.instance.getJob('docker-test')
+  credentials = CredentialsProvider.lookupCredentials(StringCredentials.class, hudsonInstance, null, null);
+  println credentials.id
+  
+  
+  def credentials_store = Jenkins.instance.getExtensionList(
+  'com.cloudbees.plugins.credentials.CredentialsProvider'
+  )[0].getStore(job)
+  
+  
+}  
+  
 }
+
 
 return this;
 
