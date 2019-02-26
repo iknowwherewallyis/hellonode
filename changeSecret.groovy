@@ -132,8 +132,8 @@ def changeSecretText(id, new_secret){
     println(c.id)
   }
 
-def c = creds.find {it.id == id}
-
+//def c = creds.find {it.id == id}
+/*
 if (!c) {
   println "could not find credential for ${id} in Jenkins credential store"
   return "Unable to pickup credential from Jenkins"
@@ -167,7 +167,7 @@ if ( c ) {
 } else {
   println "could not find credential for ${c.id} in Jenkins credential store"
 }
-
+*/
 }
 
 return this;
