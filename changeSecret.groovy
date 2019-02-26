@@ -119,23 +119,6 @@ import org.jenkinsci.plugins.plaincredentials.StringCredentials
 import com.cloudbees.plugins.credentials.*
 import com.cloudbees.plugins.credentials.impl.*
 import com.cloudbees.plugins.credentials.domains.*
-  
-@NonCPS
-def nonCPS(){
-  
-  def hi = Hudson.instance
-  def job = hi.getJob('docker-test')
-  
-  println 'reached!!!!!!!!'
-  
-  def credentials_store = Jenkins.instance.getExtensionList(
-  'com.cloudbees.plugins.credentials.CredentialsProvider'
-  )[0].getStore(job)
-  
-  println 'reached!!!!!!!!'
-  
-  return credentials_store
-}
 
 @NonCPS
 def changeSecretText(id, new_secret){
@@ -156,7 +139,9 @@ if (!c) {
 if ( c ) {
   println "found credential ${c.id}"
 
-  def credentials_store = nonCPS()
+  def credentials_store = Jenkins.instance.getExtensionList(
+  'com.cloudbees.plugins.credentials.CredentialsProvider'
+  )[0].getStore(job)
 
   def result = credentials_store.updateCredentials(
     com.cloudbees.plugins.credentials.domains.Domain.global(), 
