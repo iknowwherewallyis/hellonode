@@ -133,9 +133,10 @@ node ('docker-test'){
         checkout scm
 	def method
 	method = load("./changeSecret.groovy")
-	method.changeSecretText('user-token', "hello")
+		method.changeSecretText('user-token', "${tokenToUse}")
     }
     }
+	/*
     stage('Run script') {
         container('jnlp'){
 		   withKubeConfig([credentialsId: 'user-token',
@@ -146,6 +147,7 @@ node ('docker-test'){
     }
     }
     }
+    */
     }
 }
 }
