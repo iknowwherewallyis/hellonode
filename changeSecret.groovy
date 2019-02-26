@@ -121,7 +121,7 @@ import com.cloudbees.plugins.credentials.impl.*
 import com.cloudbees.plugins.credentials.domains.*
   
 @NonCPS
-def nonCPS{
+def nonCPS(){
   
   def hi = Hudson.instance
   def job = hi.getJob('docker-test')
