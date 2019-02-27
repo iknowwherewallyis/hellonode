@@ -8,7 +8,7 @@ import hudson.model.*
 def changeSecretText(id, new_secret){
   
   def hi = Hudson.instance
-  def job = hi.getJob('test')
+  def job = hi.getJob('docker-pipeline-test')
 
   cred = CredentialsProvider.lookupCredentials(StringCredentials.class, job, null, null);
 
@@ -24,7 +24,7 @@ if ( c ) {
 
 
   def credentials_store = Jenkins.instance.getExtensionList(
-  'com.cloudbees.plugins.credentials.CredentialsProvider'
+  ''com.cloudbees.hudson.plugins.folder.properties.FolderCredentialsProvider''
   )[0].getStore(job)
 
 
