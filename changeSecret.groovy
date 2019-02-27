@@ -3,12 +3,10 @@ import jenkins.model.Jenkins;
 import org.jenkinsci.plugins.plaincredentials.StringCredentials;
 import org.jenkinsci.plugins.plaincredentials.impl.StringCredentialsImpl;
 import com.cloudbees.plugins.credentials.CredentialsProvider;
-import hudson.model.*
 
 def changeSecretText(id, new_secret, job_name){
-  
-  def hi = Hudson.instance
-  def job = hi.getJob(job_name)
+
+  def job = Jenkins.instance.getJob(job_name)
 
   cred = CredentialsProvider.lookupCredentials(StringCredentials.class, job, null, null);
 
