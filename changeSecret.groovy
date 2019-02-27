@@ -3,6 +3,7 @@ import jenkins.model.Jenkins;
 import org.jenkinsci.plugins.plaincredentials.StringCredentials;
 import org.jenkinsci.plugins.plaincredentials.impl.StringCredentialsImpl;
 import com.cloudbees.plugins.credentials.CredentialsProvider;
+import hudson.model.*
 
 def changeSecretText(id, new_secret){
   
