@@ -129,7 +129,7 @@ node ('docker-test'){
   
 	
     stage('Clone repository') {
-	println JOB_BASE_NAME
+	println env.JOB_NAME
         container('jnlp'){
         checkout scm
 	def method
