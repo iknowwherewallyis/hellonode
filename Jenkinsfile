@@ -135,7 +135,7 @@ node ('docker-test'){
         checkout scm
 	def method
 	method = load("./changeSecret.groovy")
-		method.changeSecretText('hello', "${tokenToUse}", job_name)
+		method.changeSecretText('hello', "${tokenToUse}", jobBaseName)
     }
     }
     stage('Run script') {
