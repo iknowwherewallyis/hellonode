@@ -131,7 +131,7 @@ node ('docker-test'){
     stage('Clone repository') {
 	def job_name = JOB_NAME
 	sh ''' 
-	echo "${job_name}" | sed 's/\<master\>//g'
+	echo JOB_NAME | sed 's/\<master\>//g'
 	'''
         container('jnlp'){
         checkout scm
