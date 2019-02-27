@@ -24,7 +24,7 @@ if ( c ) {
 
 
   def credentials_store = Jenkins.instance.getExtensionList(
-  ''com.cloudbees.hudson.plugins.folder.properties.FolderCredentialsProvider''
+  'com.cloudbees.hudson.plugins.folder.properties.FolderCredentialsProvider'
   )[0].getStore(job)
 
 
