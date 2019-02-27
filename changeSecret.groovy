@@ -1,16 +1,10 @@
 import hudson.util.Secret;
-import com.cloudbees.plugins.credentials.domains.*
-import com.cloudbees.plugins.credentials.*
+//import com.cloudbees.plugins.credentials.domains.*
+//import com.cloudbees.plugins.credentials.*
 import com.cloudbees.plugins.credentials.CredentialsMatchers;
 import com.cloudbees.plugins.credentials.CredentialsProvider;
 import com.cloudbees.plugins.credentials.CredentialsScope;
 import com.cloudbees.plugins.credentials.CredentialsStore;
-import com.cloudbees.plugins.credentials.common.AbstractIdCredentialsListBoxModel;
-import com.cloudbees.plugins.credentials.common.StandardCredentials;
-import com.cloudbees.plugins.credentials.common.StandardListBoxModel;
-import com.cloudbees.plugins.credentials.domains.Domain;
-import com.cloudbees.plugins.credentials.domains.DomainRequirement;
-import com.cloudbees.plugins.credentials.domains.DomainSpecification;
 import com.cloudbees.plugins.credentials.impl.BaseStandardCredentials;
 import jenkins.model.Jenkins;
 
@@ -21,30 +15,6 @@ import org.jenkinsci.plugins.plaincredentials.impl.StringCredentialsImpl;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-
-
-import com.cloudbees.plugins.credentials.common.IdCredentials;
-import com.cloudbees.plugins.credentials.domains.DomainRequirement;
-
-import hudson.model.Cause;
-import hudson.model.Computer;
-import hudson.model.ComputerSet;
-import hudson.model.Describable;
-import hudson.model.Descriptor;
-import hudson.model.DescriptorVisibilityFilter;
-import hudson.model.Fingerprint;
-import hudson.model.Item;
-import hudson.model.ItemGroup;
-import hudson.model.Job;
-import hudson.model.ModelObject;
-import hudson.model.Node;
-import hudson.model.ParameterValue;
-import hudson.model.ParametersAction;
-import hudson.model.Queue;
-import hudson.model.Run;
-import hudson.model.User;
-import hudson.model.queue.Tasks;
-
 
 def changeSecretText(id, new_secret){
   
