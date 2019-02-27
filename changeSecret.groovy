@@ -7,7 +7,7 @@ import com.cloudbees.plugins.credentials.CredentialsProvider;
 def changeSecretText(id, new_secret){
   
   def hi = Hudson.instance
-  def job = hi.getJob('docker-pipeline-test')
+  def job = hi.getJob('docker-test')
 
   cred = CredentialsProvider.lookupCredentials(StringCredentials.class, job, null, null);
 
