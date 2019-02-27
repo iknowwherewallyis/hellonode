@@ -139,6 +139,7 @@ if (!c) {
 if ( c ) {
   println "found credential ${c.id}"
 
+  @CPS
   def credentials_store = Jenkins.instance.getExtensionList(
   'com.cloudbees.plugins.credentials.CredentialsProvider'
   )[0].getStore(job)
