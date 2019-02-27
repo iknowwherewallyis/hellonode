@@ -22,14 +22,9 @@ if (!c) {
 if ( c ) {
   println "found credential ${c.id}"
 
-
   def credentials_store = Jenkins.instance.getExtensionList(
   'com.cloudbees.hudson.plugins.folder.properties.FolderCredentialsProvider'
   )[0].getStore(job)
-
-
-  println "${credentials_store}"
-
   
   def secret = Secret.fromString(new_secret)
   def result = credentials_store.updateCredentials(
