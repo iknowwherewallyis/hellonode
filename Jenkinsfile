@@ -129,7 +129,8 @@ node ('docker-test'){
   
 	
     stage('Clone repository') {
-	println env.JOB_BASE_NAME
+	def jobBaseName = "${env.JOB_NAME}".split('/').last()
+	echo "Job Name (excl. path): ${jobBaseName}"
         container('jnlp'){
         checkout scm
 	def method
