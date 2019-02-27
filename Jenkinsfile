@@ -116,8 +116,8 @@ node ('docker-test'){
 	
   
   def secrets = [
-      [$class: 'VaultSecret', path: 'secret/hello', secretValues: [
-          [$class: 'VaultSecretValue', envVar: 'token', vaultKey: 'user-token']]]
+      [$class: 'VaultSecret', path: 'secret/netsuite', secretValues: [
+          [$class: 'VaultSecretValue', envVar: 'token', vaultKey: 'netsuite-token']]]
   ]
   def configuration = [$class: 'VaultConfiguration',
                        vaultUrl: 'http://vault.cct.marketing',
