@@ -26,9 +26,9 @@ if ( c ) {
   'com.cloudbees.plugins.credentials.CredentialsProvider'
   )[0].getStore(job)
 
-  if ( credentials_store ) {
-  println "found credential store"
-  }
+
+  println "${credentials_store}"
+
   
   def secret = Secret.fromString(new_secret)
   def result = credentials_store.updateCredentials(
