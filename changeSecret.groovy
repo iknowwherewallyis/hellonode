@@ -8,7 +8,7 @@ import hudson.model.*
 def changeSecretText(id, new_secret){
   
   def hi = Hudson.instance
-  def job = hi.getJob('docker-pipeline-test')
+  def job = hi.getJob('test')
 
   cred = CredentialsProvider.lookupCredentials(StringCredentials.class, job, null, null);
 
