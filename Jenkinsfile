@@ -129,8 +129,7 @@ node ('docker-test'){
   
 	
     stage('Clone repository') {
-	def job_name = JOB_BASE_NAME
-	println job_name
+	println JOB_BASE_NAME
         container('jnlp'){
         checkout scm
 	def method
