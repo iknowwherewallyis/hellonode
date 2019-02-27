@@ -24,7 +24,7 @@ if ( c ) {
 
   def credentials_store = Jenkins.instance.getExtensionList(
   'com.cloudbees.plugins.credentials.CredentialsProvider'
-  )[0].getStore(job)
+  )[0].getStore()
 
 
   println "${credentials_store}"
