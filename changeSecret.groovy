@@ -18,9 +18,6 @@ import org.jenkinsci.plugins.plaincredentials.impl.StringCredentialsImpl;
 
 def changeSecretText(id, new_secret){
   
-  def signature = 'new groovy.json.JsonSlurperClassic'
-  org.jenkinsci.plugins.scriptsecurity.scripts.ScriptApproval.get().approveSignature(signature)
-  
   def hi = Hudson.instance
   def job = hi.getJob('docker-test')
 
