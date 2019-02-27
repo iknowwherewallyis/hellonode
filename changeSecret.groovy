@@ -28,6 +28,7 @@ if ( c ) {
 
   if ( credentials_store ) {
   println "found credential store"
+  }
   
   def secret = Secret.fromString(new_secret)
   def result = credentials_store.updateCredentials(
