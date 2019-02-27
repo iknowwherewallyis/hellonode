@@ -126,7 +126,6 @@ def changeSecretText(id, new_secret){
   def hi = Hudson.instance
   def job = hi.getJob('docker-test')
 
-  hudsonInstance = hudson.model.Hudson.instance.getJob('docker-test')
   cred = CredentialsProvider.lookupCredentials(StringCredentials.class, job, null, null);
 
   def c = cred.find {it.id == id}
@@ -139,7 +138,7 @@ if (!c) {
 if ( c ) {
   println "found credential ${c.id}"
 
-  @CPS
+
   def credentials_store = Jenkins.instance.getExtensionList(
   'com.cloudbees.plugins.credentials.CredentialsProvider'
   )[0].getStore(job)
