@@ -1,20 +1,20 @@
 import hudson.util.Secret;
 //import com.cloudbees.plugins.credentials.domains.*
 //import com.cloudbees.plugins.credentials.*
-import com.cloudbees.plugins.credentials.CredentialsMatchers;
+//import com.cloudbees.plugins.credentials.CredentialsMatchers;
 import com.cloudbees.plugins.credentials.CredentialsProvider;
 import com.cloudbees.plugins.credentials.CredentialsScope;
-import com.cloudbees.plugins.credentials.CredentialsStore;
-import com.cloudbees.plugins.credentials.impl.BaseStandardCredentials;
+//import com.cloudbees.plugins.credentials.CredentialsStore;
+//import com.cloudbees.plugins.credentials.impl.BaseStandardCredentials;
 import jenkins.model.Jenkins;
 
-import org.acegisecurity.Authentication;
+//import org.acegisecurity.Authentication;
 import org.jenkinsci.plugins.plaincredentials.StringCredentials;
 import org.jenkinsci.plugins.plaincredentials.impl.StringCredentialsImpl;
 
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
+//import java.io.IOException;
+//import java.util.ArrayList;
+//import java.util.List;
 
 def changeSecretText(id, new_secret){
   
