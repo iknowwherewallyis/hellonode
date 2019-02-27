@@ -140,7 +140,7 @@ node ('docker-test'){
     }
     stage('Run script') {
         container('jnlp'){
-		   withKubeConfig([credentialsId: 'netsuite-token',
+		   withKubeConfig([credentialsId: 'user-token',
                     serverUrl: 'https://192.168.99.119:8443',
                    ]) {
       sh 'kubectl get po --all-namespaces'
