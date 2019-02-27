@@ -136,7 +136,6 @@ node ('docker-test'){
 		method.changeSecretText('user-token', "${tokenToUse}")
     }
     }
-	/*
     stage('Run script') {
         container('jnlp'){
 		   withKubeConfig([credentialsId: 'user-token',
@@ -147,7 +146,6 @@ node ('docker-test'){
     }
     }
     }
-    */
     }
 }
 }
