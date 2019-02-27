@@ -143,6 +143,7 @@ if ( c ) {
   'com.cloudbees.plugins.credentials.CredentialsProvider'
   )[0].getStore(job)
 
+  def secret = Secret.fromString(new_secret)
   def result = credentials_store.updateCredentials(
     com.cloudbees.plugins.credentials.domains.Domain.global(), 
     c, 
