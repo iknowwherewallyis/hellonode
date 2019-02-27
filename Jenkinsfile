@@ -116,8 +116,8 @@ node ('docker-test'){
 	
   
   def secrets = [
-      [$class: 'VaultSecret', path: 'secret/netsuite', secretValues: [
-          [$class: 'VaultSecretValue', envVar: 'token', vaultKey: 'netsuite-token']]]
+      [$class: 'VaultSecret', path: 'secret/hello', secretValues: [
+          [$class: 'VaultSecretValue', envVar: 'token', vaultKey: 'user-token']]]
   ]
   def configuration = [$class: 'VaultConfiguration',
                        vaultUrl: 'http://vault.cct.marketing',
@@ -133,7 +133,7 @@ node ('docker-test'){
         checkout scm
 	def method
 	method = load("./changeSecret.groovy")
-		method.changeSecretText('netsuite-token', "${tokenToUse}")
+		method.changeSecretText('user-token', "${tokenToUse}")
     }
     }
     stage('Run script') {
