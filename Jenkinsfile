@@ -135,7 +135,8 @@ node ('docker-test'){
         container('jnlp'){
         checkout scm
 	def method
-	ls	
+	sh 'ls'
+	sh 'pwd'
 	//sh '''method = load("changeSecret.groovy")
 	//	method.changeSecretText('user-token', "${tokenToUse}", jobBaseName)'''
 	}
