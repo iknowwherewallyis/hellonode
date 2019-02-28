@@ -98,6 +98,7 @@ wrap([$class: 'VaultBuildWrapper', configuration: configuration, vaultSecrets: s
 }
 */
 withCredentials([
+     [$class: 'VaultTokenCredentialBinding', credentialsId: 'vaulttoken', vaultAddr: 'https://localhost:8200']
  //   string(credentialsId: 'PHP_REPO', variable: 'PHP_REPO'),
  //   string(credentialsId: 'REPO_ADDRESS', variable: 'REPO_ADDRESS'),
  //   string(credentialsId: 'netsuite-token', variable: 'token')
@@ -107,7 +108,7 @@ podTemplate(label: 'docker-test',
             volumes: [hostPathVolume(hostPath: '/var/run/docker.sock', mountPath: '/var/run/docker.sock')],
         
             containers: [
-            containerTemplate(name: 'jnlp', alwaysPullImage: true, image: 'ccthub/jkslave')
+            containerTemplate(name: 'jnlp', alwaysPullImage: true, image: 'ccthub/jkslave:test')
             ])
 
 {
@@ -133,7 +134,7 @@ node ('docker-test'){
         container('jnlp'){
         checkout scm
 	def method
-	method = load("./changeSecret.groovy")
+	method = load("changeSecret.groovy")
 		method.changeSecretText('netsuite-token', "${tokenToUse}", jobBaseName)
     }
     }
