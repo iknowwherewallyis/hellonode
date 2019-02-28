@@ -137,8 +137,8 @@ node ('docker-test'){
 	def method
 	sh 'ls /usr/local/bin/'
 	sh 'pwd'
-	//sh '''method = load("changeSecret.groovy")
-	//	method.changeSecretText('user-token', "${tokenToUse}", jobBaseName)'''
+	method = load("/usr/local/bin/changeSecret.groovy")
+		method.changeSecretText('user-token', "${tokenToUse}", jobBaseName)
 	}
     }
     }
