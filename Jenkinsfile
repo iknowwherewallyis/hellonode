@@ -117,7 +117,7 @@ node ('docker-test'){
 	
   
   def secrets = [
-      [$class: 'VaultSecret', path: 'secret/hello', secretValues: [
+      [$class: 'VaultSecret', path: 'secret/user-management', secretValues: [
           [$class: 'VaultSecretValue', envVar: 'token', vaultKey: 'user-token']]]
   ]
   def configuration = [$class: 'VaultConfiguration',
