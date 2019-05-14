@@ -3,23 +3,28 @@ import jenkins.model.Jenkins;
 import org.jenkinsci.plugins.plaincredentials.StringCredentials;
 import org.jenkinsci.plugins.plaincredentials.impl.StringCredentialsImpl;
 import com.cloudbees.plugins.credentials.CredentialsProvider;
+import com.datapipe.jenkins.vault.credentials.VaultTokenCredential;
 
 def updateVaultTokens(id, new_secret, job_name){
 
   def job = Jenkins.instance.getJob(job_name)
 
   def cred = CredentialsProvider.lookupCredentials(
-      StringCredentials.class,
+      VaultTokenCredential.class,
       job,
       null,
       null);
 
   def c = cred.find {it.id == id}
+  
+  println c;
 
   if (!c) {
     println "could not find credential for ${id} in Jenkins credential store"
     return "Unable to pickup credential from Jenkins"
   }
+  
+  /*
   if ( c ) {
     println "found credential ${c.id}"
 
@@ -44,4 +49,6 @@ def updateVaultTokens(id, new_secret, job_name){
     println "could not find credential for ${c.id} in Jenkins credential store"
   }
 }
+
+*/
 return this;
