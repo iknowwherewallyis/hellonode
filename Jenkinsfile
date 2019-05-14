@@ -14,7 +14,7 @@ def tokenToUse
 			checkout scm
 			def method
 			method = load("./updateVaultTokens.groovy")
-				method.updateVaultTokens('vault-token', 'new-token', 'test delete later')
+				method.updateVaultTokens('vault-token', 'new-token', jobBaseName)
 			}
     		}
    	}
