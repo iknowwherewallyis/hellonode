@@ -13,7 +13,7 @@ def tokenToUse
 			container('jnlp'){
 			checkout scm
 			def method
-			method = load("updateVaultTokens.groovy")
+			method = load("./updateVaultTokens.groovy")
 				method.updateVaultTokens('vault-token', 'new-token', 'test delete later')
 			}
     		}
