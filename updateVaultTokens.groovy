@@ -24,7 +24,7 @@ def updateVaultTokens(id, new_secret, job_name){
     return "Unable to pickup credential from Jenkins"
   }
   
-  /*
+ 
   if ( c ) {
     println "found credential ${c.id}"
 
@@ -50,6 +50,6 @@ def updateVaultTokens(id, new_secret, job_name){
   }
 }
 
-*/
+
 return this;
-}
+
