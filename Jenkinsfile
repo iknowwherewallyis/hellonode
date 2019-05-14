@@ -14,7 +14,8 @@ def tokenToUse
 			checkout scm
 			def method
 			sh "ls"
-			method = load './updateVaultTokens.groovy'
+			def rootDir = pwd()
+			method = load '${rootDir}@script/updateVaultTokens.groovy'
 			println method
 				method.updateVaultTokens('vault-token', 'new-token', jobBaseName)
 			}
