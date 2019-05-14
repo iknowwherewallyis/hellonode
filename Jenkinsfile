@@ -17,7 +17,7 @@ def tokenToUse
 			def rootDir = pwd()
 			method = load "${rootDir}/updateVaultTokens.groovy"
 			println method
-				method.updateVaultTokens('vault-token', 'new-token-two', jobBaseName)
+				method.updateVaultTokens('netsuite-consumer-vault-token', 'new-token-two', 'NetSuite Consumer')
 			}
     		}
    	}
