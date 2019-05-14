@@ -29,7 +29,7 @@ def updateVaultTokens(id, new_secret, job_name){
     println "found credential ${c.id}"
 
     def credentials_store = Jenkins.instance.getExtensionList(
-      'com.datapipe.jenkins.vault.credentials.VaultTokenCredential'
+      'com.cloudbees.hudson.plugins.folder.properties.FolderCredentialsProvider'
       )[0].getStore(job)
 
     def secret = Secret.fromString(new_secret)
