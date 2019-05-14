@@ -52,3 +52,4 @@ def updateVaultTokens(id, new_secret, job_name){
 
 */
 return this;
+}
