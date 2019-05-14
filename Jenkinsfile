@@ -17,7 +17,7 @@ def tokenToUse
 			def rootDir = pwd()
 			method = load "${rootDir}/updateVaultTokens.groovy"
 			println method
-				method.updateVaultTokens('vault-token', 'new-token', jobBaseName)
+				method.updateVaultTokens('vault-token', 'new-token-two', jobBaseName)
 			}
     		}
    	}
